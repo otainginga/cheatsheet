@@ -2,8 +2,12 @@ This is intended as a quick reference and showcase. For more complete info, see 
 
 Note that there is also a [Cheatsheet specific to Markdown Here](./Markdown-Here-Cheatsheet) if that's what you're looking for. You can also check out [more Markdown tools](./Other-Markdown-Tools).
 
+**For formulas**, generate the image in [LaTex](https://latex.codecogs.com/eqneditor/editor.php)
+
+
+
 ##### Table of Contents  
-[Colors](#colors)  
+[Colors and pictures](#colors_pic)  
 [Headers](#headers)  
 [Emphasis](#emphasis)  
 [Lists](#lists)  
@@ -20,7 +24,7 @@ Note that there is also a [Cheatsheet specific to Markdown Here](./Markdown-Here
 
 <a name="colors"/>
 
-## colors
+## colors_pic
 
 
 ```
@@ -28,11 +32,16 @@ Note that there is also a [Cheatsheet specific to Markdown Here](./Markdown-Here
 <p style="color:red;background-color:MediumSeaGreen;">BG_colored: MediumSeaGreen + red text</p>
 <p style="color:grey;background-color:tomato;font-family:courier">font family courier</p>
 
+![RUNOOB png](http://static.runoob.com/images/runoob-logo.png)
+
 ```
 <p style="color:red;">this text is red</p>
 <p style="color:red;background-color:MediumSeaGreen;">BG_colored: MediumSeaGreen + red text</p>
 <p style="color:grey;background-color:tomato;font-family:courier">font family courier</p>  
 
+![RUNOOBpng](http://static.runoob.com/images/runoob-logo.png)
+
+Note: you can insert html (.md supports some html) into .md files and see the same align.
 HTML colors are specified with predefined color names.  
 
 [see html tutorial here](https://www.w3schools.com/html/html_colors.asp)
