@@ -4,11 +4,24 @@
 
 this is the first text of the paper.
 
+
+
+You can also get themes from themes gallery!
+
 [Typora Tutorial (The best Markdown Editor) - YouTube](https://www.youtube.com/watch?v=yigIbd54CU4)
 
 [Online LaTeX Equation Editor - create, integrate and download (codecogs.com)](https://latex.codecogs.com/eqneditor/editor.php)
 
+git 
 
+```sql
+
+```
+
+```kql
+vwfact()
+| getschema
+```
 
 
 
@@ -83,4 +96,28 @@ $$
 $$
 
 * \alpha : only in math blocks
+
+[^Hi]: 
+
+
+
+------
+
+
+
+https://www.google.com.sg/?gws_rd=ssl
+
+
+
+[Google](https://www.google.com.sg/?gws_rd=ssl)
+
+[google](www.baidu.com)
+
+
+
+[^footnote]: this is a footnote.
+
+
+
+
 
