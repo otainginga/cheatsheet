@@ -3,6 +3,7 @@ This is intended as a quick reference and showcase. For more complete info, see 
 Note that there is also a [Cheatsheet specific to Markdown Here](./Markdown-Here-Cheatsheet) if that's what you're looking for. You can also check out [more Markdown tools](./Other-Markdown-Tools).
 
 ##### Table of Contents  
+[Colors](#colors)  
 [Headers](#headers)  
 [Emphasis](#emphasis)  
 [Lists](#lists)  
@@ -15,6 +16,27 @@ Note that there is also a [Cheatsheet specific to Markdown Here](./Markdown-Here
 [Horizontal Rule](#hr)  
 [Line Breaks](#lines)  
 [YouTube Videos](#videos)  
+
+
+<a name="colors"/>
+
+## colors
+
+
+```
+<p style="color:red;">this text is red</p>
+<p style="color:red;background-color:MediumSeaGreen;">BG_colored: MediumSeaGreen + red text</p>
+<p style="color:grey;background-color:tomato;font-family:courier">font family courier</p>
+
+```
+<p style="color:red;">this text is red</p>
+<p style="color:red;background-color:MediumSeaGreen;">BG_colored: MediumSeaGreen + red text</p>
+<p style="color:grey;background-color:tomato;font-family:courier">font family courier</p>  
+
+HTML colors are specified with predefined color names.  
+
+[see html tutorial here](https://www.w3schools.com/html/html_colors.asp)
+
 
 <a name="headers"/>
 
@@ -162,6 +184,14 @@ Or leave it empty and use the [link text itself].
 URLs and URLs in angle brackets will automatically get turned into links. 
 http://www.example.com or <http://www.example.com> and sometimes 
 example.com (but not on Github, for example).
+
+***For in-page jumps see anwers from*** [stackflow answers](https://stackoverflow.com/questions/6695439/how-to-link-to-a-named-anchor-in-multimarkdown/7015050#7015050)
+
+```no-highlight
+Table of Contents  
+[Headers](#issue_name)
+<a name="issue_name"/>
+```
 
 Some text to show that the reference links can follow later.
 
