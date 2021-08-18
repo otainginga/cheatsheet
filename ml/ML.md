@@ -648,7 +648,9 @@ $$
 
 [化简可得]([用人话讲明白逻辑回归Logistic regression - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/139122386))
 
+[马冬什么](https://www.zhihu.com/column/c_1114213082062450688)
 
+[线性回归-CSDN博客](https://blog.csdn.net/Sirow/article/details/109141844)
 
 排版：
 
