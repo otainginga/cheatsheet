@@ -666,7 +666,7 @@ $$
 - 正则化（regularization） => 踩刹车
 - 验证（validation） => 安装仪表盘
 
-# **Regularization**(正则化)
+# <*>**Regularization**(正则化)
 
 ---
 
@@ -796,7 +796,7 @@ $$
 
 
 
-
+[笔试面试-红色石头的个人博客 (redstonewill.com)](https://redstonewill.com/category/written-interview/)
 
 ## 99.02 Layout
 
