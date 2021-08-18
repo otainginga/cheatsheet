@@ -351,7 +351,7 @@ $$
 
 
 
-## 05.02 Maxinum Likelihood function
+## 05.02 Maximum Likelihood function
 
 在二分类问题中，y只取0或1，可以组合起来表示y的概率: ![[公式]](https://www.zhihu.com/equation?tex=P%28y%29%3DP%28y%3D1%29%5E%7By%7DP%28y%3D0%29%5E%7B1-y%7D) 
 
@@ -610,27 +610,163 @@ $$
 
 
 
+# 07 Overfitting
+
+---
+
+## 07.01 overfitting basic
+
+![img](https://www.researchgate.net/profile/Lean-Yu/publication/3297508/figure/fig4/AS:340309096583175@1458147419813/Overfitting-underfitting-and-model-complexity.png)
+
+.
+
+![errorrate.jpg](https://github.com/otainginga/Image/blob/main/errorrate.jpg?raw=true)
 
 
 
 
 
+## 07.02 以开车为比喻：
+
+- 机器学习 => 开车
+- 过拟合 => 出车祸
+- 使用过度的VC维 => 开得太快
+- 噪音 => 颠簸的路面
+- 数据量的大小 => 对路面状况的观察
+
+**噪音与数据量对过拟合的作用**
+
+首先，我们有两份数据，这两份数据由**10次多项式和50次多项式**的目标函数产生，前者有噪音，后者没有噪音，数据点如图所示：
+
+![img](https://pic4.zhimg.com/80/v2-e44906e8d9175a0fc52b548b5ff7384b_720w.jpg)
+
+**train set A、train set B**
+
+1、使用两种学习模型（二次式假设空间 ![[公式]](https://www.zhihu.com/equation?tex=H_2) 和十次多项式假设空间 ![[公式]](https://www.zhihu.com/equation?tex=H_%7B10%7D) ）对训练集A\B进行学习得到的假设函数g和错误率如下：
+
+![img](https://pic4.zhimg.com/80/v2-d0a6d599f008b576ec05490199d2f36f_720w.jpg)
+
+为什么二次式模型与目标函数的次数有很大差距反而比10次多项式模型学习能力还好？这与训练样本量有关，如下图：
+
+![img](https://pic4.zhimg.com/80/v2-76afb43894798f6b34059ba8d768f3f3_720w.jpg)
+
+从图中可以看出，数据量少时，尽管2次假设的Ein比10次函数的Ein大很多，但是2次假设中Ein和Eout的差距比10次假设小的多，因此在样本点不多时，低次假设的学习泛化能力更强，即在灰色区域（样本不多的情况下）中，高次假设函数发生了过拟合。
+
+上述阐述了在含有噪音的情况下，低次多项式假设比和目标函数同次的多项式假设表现更好，那如何解释在50次多项式函数中也是二次式表现好的现象呢？**因为50次目标函数对于不论是2次假设还是10次假设都相当于一种含有噪音的情况（两者都无法做到50次的目标函数，因此相当于含有噪音）。**
+
+注：噪音的进一步理论阐述暂不描述。（噪音也是造成过拟合的重要原因）
+
+## 07.03 **如何处理过拟合**
+
+再以开车为例：
+
+- 从简单的模型出发  => 开慢点
+- 数据清理/裁剪（data cleaning/pruning） => 更准确的路况信息
+- 数据提示（data hinting） => 获取更多的路况信息
+- 正则化（regularization） => 踩刹车
+- 验证（validation） => 安装仪表盘
+
+# **Regularization**(正则化)
+
+---
 
 
 
+防止过拟合的一种有效措施即是正则化假设。
+
+**正则化假设**
+
+将假设函从高次多项式的数降至低次，如同开车时的踩刹车，将速度降低，如下图所示，右边表示高次多项式函数，明显产生了过拟合现象，而左边的表示使用正则化后的低次函数。
+
+![img](https://pic4.zhimg.com/80/v2-3755ce0a187a1f58815e118760d0aeff_1440w.jpg)
+
+如何降次呢？把降次的问题转换成带**有限制（constraint）**条件的问题。下面以10次多项式和二次式为例
+$$
+\begin{aligned}  
+&H_{10}: w_{0}+ w_{1}x+ w_{2}x^{2}...+ w_{10}x^{10}\\
+&H_{2}: w_{0}+ w_{1}x+ w_{2}x^{2}
+\end{aligned}
+$$
+其中二次式可以转化为：
+$$
+\begin{aligned} 
+&H_{2}\equiv  \left \{ 
+\mathbb{R}^{10+1} \\ 
+
+while \: w_{3}=...=w_{10}=0 \right \} \\
 
 
+&extending \:  to \\
 
 
+&H'_{2}\equiv \left \{  \mathbb{R}^{10+1} \\ 
+
+\:while \ge 8 \: of \: W_{q}=0, \\
+number\: of\: w\: being \:0 \:\ge \:8
+ \right \}
+ \end{aligned} 
+$$
 
 
+假设空间之间的关系为： ![[公式]](https://www.zhihu.com/equation?tex=H_2%5Csubset+H_2%5E%7B%27%7D%5Csubset+H_%7B10%7D)
 
+由于 ![[公式]](https://www.zhihu.com/equation?tex=H_2%5E%7B%27%7D) 的minEin
 
+![img](https://pic2.zhimg.com/80/v2-a6c30d4b20c98e4aeadb68dc03c26a11_1440w.jpg)
 
+是一个NP-hard问题，所以将假设空间再次改写为（权值向量w的模的平方小于C）：
 
+![img](https://pic3.zhimg.com/80/v2-a8e893e804ec70b77ecb97ac36bce576_1440w.jpg)
 
+![img](https://pic3.zhimg.com/80/v2-8490d503cb3c5cb87d12641bdb20bada_1440w.jpg)
 
+（此时可能w的分向量个数大于3，暂时不要问为啥，我也不知道为啥）H(c)为正则化假设空间，即假设限制条件的假设空间。正则化假设空间中最好的假设用符号 ![[公式]](https://www.zhihu.com/equation?tex=w_%7BREG%7D) 表示。
 
+**权值衰减正则化**
+
+上节中得到的minEin可以表达为：
+
+![img](https://pic2.zhimg.com/80/v2-06ab8a19082b4bbfde287b695e630bd1_1440w.jpg)
+
+![img](https://pic2.zhimg.com/80/v2-d5c140c05099ece4b233f76124df7edd_1440w.jpg)
+
+式子中![[公式]](https://www.zhihu.com/equation?tex=%28wz-y%29%5E2) 和 ![[公式]](https://www.zhihu.com/equation?tex=w%5E2) 在 ![[公式]](https://www.zhihu.com/equation?tex=R%5E%7Bq%2B1%7D) 空间中是如下图所示的两个超球体（椭圆球体和正圆球体）
+
+![img](https://pic4.zhimg.com/80/v2-ac9d087861031965d8d47407e696332b_1440w.jpg)
+
+爆炸性的东西来了！w的点要在球面上移动（不能超出球面），又同时要接近无限制条件下的最小点，那么，w的移动方向必须满足两个条件（红色向量即w方向是球面法向量）：1、移动方向是与球面法向量垂直，2、移动方向要是梯度反方向的一个分量向量；那何时降到最小？即梯度反方向（蓝色）不存在与球切线方向（绿色）相同的分量，只有当梯度反方向与法向量平行时，才无法得到下一个方向，即达到了最优点，两向量平行可以得出公式（也即拉格朗日函数的几何意义）：
+
+![[公式]](https://www.zhihu.com/equation?tex=a%3D%5Clambda+b%5C%5C+%5CRightarrow+-%5Cnabla+E_%7Bin%7D%28w_%7BREG%7D%29%3D%5Clambda+w_%7BREG%7D%5C%5C+%5CRightarrow+%5Cnabla+E_%7Bin%7D%28w_%7BREG%7D%29%2B%5Clambda+w_%7BREG%7D%3D0%5C%5C+%5CRightarrow+%5Cnabla+E_%7Bin%7D%28w_%7BREG%7D%29%2B%5Cfrac%7B2%5Clambda%7D%7BN%7Dw_%7BREG%7D%3D0%5C%5C)
+
+将线性回归中求的 ![[公式]](https://www.zhihu.com/equation?tex=%5Cnabla+E_%7Bin%7D%28w_%7BREG%7D%29) 代入，则有：
+
+![img](https://pic4.zhimg.com/80/v2-f174ec7e6a1ab1824a48b80d89fc37f3_1440w.jpg)
+
+![img](https://pic3.zhimg.com/80/v2-eb65e7550bf33cf32ede12bdba6ff50e_1440w.jpg)又称为：岭回归 啊哈~岭大王
+
+考虑一下式子 ![[公式]](https://www.zhihu.com/equation?tex=%5Cnabla+E_%7Bin%7D%28w_%7BREG%7D%29%2B%5Cfrac%7B2%5Clambda%7D%7BN%7Dw_%7BREG%7D) ，做积分得到 ![[公式]](https://www.zhihu.com/equation?tex=E_%7Bin%7D%28w%29%2B%5Cfrac%7B%5Clambda%7D%7BN%7Dw%5ETw) ，我们定义 ![[公式]](https://www.zhihu.com/equation?tex=E_%7Baug%7D%28w%29%3DE_%7Bin%7D%28w%29%2B%5Cfrac%7B%5Clambda%7D%7BN%7Dw%5ETw) 为增广错误（augmented error）， ![[公式]](https://www.zhihu.com/equation?tex=w%5ETw) 为正则化项（regularizer），所以我们神奇的用无约束条件的求解Ein代替了有约束条件的求解Ein！
+
+我们的最终求解公式可以表示为：
+
+![img](https://pic1.zhimg.com/80/v2-88ca3b084eec6de6339fbcef0c79a63c_1440w.jpg)
+
+下图为不同 ![[公式]](https://www.zhihu.com/equation?tex=%5Clambda) 对拟合的影响：
+
+![img](https://pic2.zhimg.com/80/v2-c6e524925dc2cde571cdaefd37427755_1440w.jpg)
+
+越大的 对应着越短的权值向量w，同时也对应着越小的约束半径C
+
+**总结**
+
+上面讨论称为L2正则化：
+
+![img](https://pic3.zhimg.com/80/v2-05fe9afe6e1dab7ae480f23e9c9977f2_1440w.jpg)
+
+还有L1正则化：
+
+![img](https://pic3.zhimg.com/80/v2-6def1309e04d62686992ec670a05e8aa_1440w.jpg)
+
+![img](https://pic2.zhimg.com/80/v2-5b6daaa4ad30f4de998aea3ef2553fad_1440w.jpg)
 
 
 
@@ -644,7 +780,9 @@ $$
 
 # 99 Supplementary
 
-[岭大王]([岭大王 - 知乎 (zhihu.com)](https://www.zhihu.com/people/jerryd99))
+## 99.01 Issue
+
+[岭大王](https://www.zhihu.com/people/jerryd99)
 
 [化简可得]([用人话讲明白逻辑回归Logistic regression - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/139122386))
 
@@ -652,11 +790,28 @@ $$
 
 [线性回归-CSDN博客](https://blog.csdn.net/Sirow/article/details/109141844)
 
-排版：
+[零基础入门深度学习(1) - 感知器 - 作业部落 Cmd Markdown 编辑阅读器 (zybuluo.com)](https://www.zybuluo.com/hanbingtao/note/433855)
+
+[Sirow / Repositories (github.com)](https://github.com/Sirow?tab=repositories)
+
+
+
+
+
+## 99.02 Layout
 
 [文本居中]([LaTeX（1）设置部分文本居中左对齐、居中右对齐_一个瑞特的博客-CSDN博客_latex 右对齐](https://blog.csdn.net/qq_40675882/article/details/84556527))
 
 [排版大全]([Typora数学公式汇总（Markdown） - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/261750408?utm_source=wechat_session))
 
+## 99.03 Josh Starmer
 
+### ML<80>
 
+### NN<13>
+
+### Statistics<46>
+
+### Linear regression<10>
+
+### Logistic Regression<7>
