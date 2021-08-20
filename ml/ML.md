@@ -1163,6 +1163,14 @@ Cα(Tt)=Cα(T)Cα(Tt)=Cα(T)
 
 ![img](https://2.bp.blogspot.com/-EvSXDotTOwc/XMfeOGZ-CVI/AAAAAAAAEiE/oePFfvhfOQM11dgRn9FkPxlegCXbgOF4QCLcBGAs/s1600/confusionMatrxiUpdated.jpg)
 
+
+
+## 15.05  Decision Tree in R
+
+[R语言与机器学习学习笔记（分类算法）（2）决策树算法_beta-CSDN博客](https://blog.csdn.net/yujunbeta/article/details/14986219/?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_title~default-0.control&spm=1001.2101.3001.4242)
+
+
+
 参考：
 
 [决策树scikit-learn重要参数详解_小狐狸-CSDN博客](https://blog.csdn.net/u010591976/article/details/105825363)
