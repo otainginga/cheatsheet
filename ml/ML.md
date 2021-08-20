@@ -827,7 +827,7 @@ $$
 　
 \end{aligned}
 $$
-　　　　　　　
+
 
 　　　　　　　　　　　　　
 
@@ -848,9 +848,9 @@ $$
 　　　　&得到子树T_{i}并返回。
 　　　　\end{aligned}
 $$
-　　　
 
- 
+
+
 
 ### 15.03 决策树ID3算法的不足
 
@@ -879,7 +879,7 @@ $$
 H_{A}(D) = -\sum_{i=1}^{n} \frac{|D_{i}|}{|D|}log2\frac{|D_{i}|}{|D|}\\
 其中n为特征A的类别数， D_{i}为特征A的第i个取值对应的样本个数。|D|为样本个数。
 $$
-　　　　
+
 
 　　　　特征数越多的特征对应的特征熵越大，它作为分母，可以校正信息增益容易偏向于取值较多的特征的问题。
 
@@ -1160,6 +1160,16 @@ Cα(Tt)=Cα(T)Cα(Tt)=Cα(T)
 
 
 ## 15.04 Scikit-learn & DT
+
+![img](https://2.bp.blogspot.com/-EvSXDotTOwc/XMfeOGZ-CVI/AAAAAAAAEiE/oePFfvhfOQM11dgRn9FkPxlegCXbgOF4QCLcBGAs/s1600/confusionMatrxiUpdated.jpg)
+
+参考：
+
+[决策树scikit-learn重要参数详解_小狐狸-CSDN博客](https://blog.csdn.net/u010591976/article/details/105825363)
+
+[scikit-learn决策树算法类库使用小结 - 刘建平Pinard - 博客园 (cnblogs.com)](https://www.cnblogs.com/pinard/p/6056319.html)
+
+[A Step by Step ID3 Decision Tree Example - Sefik Ilkin Serengil (sefiks.com)](https://sefiks.com/2017/11/20/a-step-by-step-id3-decision-tree-example/)
 
 
 
