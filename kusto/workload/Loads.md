@@ -36,6 +36,10 @@ Functions that do not need vw but still the latest:
 
 # 01 Opportunity
 
+vwopportuity: The properties of a opportunity ID.
+
+vwFactOpportunityPipeline()
+
 
 
 
@@ -58,9 +62,17 @@ Functions that do not need vw but still the latest:
 
 ## 03.02 vwOpportunityPipeline()
 
-**ID, Fiscal_Time, Product_category,[ Pipeline**: 预测收入]
+1. **ID, Fiscal_Time, Product_category,[ Pipeline**: 预测收入]
+2. Different categories of the product: The product information, if it sells more than 1 product, it will bring out more than 1 records.
 
+```
+vwOpportunityPipeline()
+| where CRMOpportunityID == "7-SNYJIIW2V"
+```
 
+<img src="https://github.com/otainginga/Image/blob/main/vwopportunitypipeline.png?raw=true" alt="vwopportunitypipeline.png" style="zoom:150%;" />
+
+3. The quantity is called "SEATS"
 
 | ColumnName          | ColumnType | Sample                            | Note           |
 | ------------------- | ---------- | --------------------------------- | -------------- |
@@ -81,13 +93,68 @@ Functions that do not need vw but still the latest:
 
 
 
+## 03.04 vwBilledRevenue()
+
+指真实收入
+
+|                         | Sample 1                          | sample 2                                | Note               |
+| :---------------------- | --------------------------------- | --------------------------------------- | ------------------ |
+| CommercialWorkload      | M365 Suites E5                    | M365 Suites E5                          |                    |
+| **SuperRevSumDivision** | **Windows E5 - M365**             | **O365 E5 - M365**                      |                    |
+| **RevSumDivision**      | **Windows E5 - M365 Sec&Comp**    | **O365 F5 - M365 Sec&Comp**             |                    |
+| **RevSumCategory**      | **M365 E5 Info Prot & Gov - Win** | **O365 F5 - M365 Sec&Comp - Sec  FUSL** |                    |
+| **ProductFamily**       | **M365 E5 IP & Govern - Win**     | **M365 F5 Security - O365**             |                    |
+| TPID                    | 641728                            | 648224                                  |                    |
+| TransactionType         | N/A                               | Paid                                    |                    |
+| **FiscalYear**          | **FY23**                          | **FY22**                                |                    |
+| **FiscalQuarter**       | **FY23-Q4**                       | **FY22-Q2**                             |                    |
+| **FiscalMonth**         | **00:00.0**                       | **00:00.0**                             |                    |
+| InitiatedUnits          | 385160                            | 329060                                  | 一般不可做SUM 操作 |
+| BilledRevenue           | 0                                 | 0                                       |                    |
+| ETLDate                 | 00:00.0                           | 00:00.0                                 |                    |
+| **Area**                | **United States**                 | **United States**                       |                    |
+| **Subsidiary**          | **United States**                 | **United States**                       |                    |
+| ActualLicenses          | 0                                 | 0                                       |                    |
+| SecurityBilledRevenue   | 0                                 | 0                                       |                    |
+| BusinessType            | Recurring                         | Renewal                                 |                    |
+| BilledRevenueYoY        |                                   |                                         |                    |
+| BilledRevenueYTD        | 400526.3                          | 0                                       |                    |
+| BilledRevenueQTD        | 0                                 | 0                                       |                    |
+| **SummarySegment**      | **Enterprise Commercial**         | **Enterprise Commercial**               |                    |
+| **Segment**             | **Major Commercial**              | **Strategic Commercial**                |                    |
+| **SubSegment**          | **Major - Commercial Other**      | **Strategic - Commercial Other**        |                    |
 
 
 
+## 03.05 vwBilledBudget()
 
+Target revenue: 某地区某月的希望销售额
 
-
-
+| Issue                    |                                          | Note     |
+| ------------------------ | ---------------------------------------- | -------- |
+| SuperRevSumDivision      | Enterprise Client                        |          |
+| RevSumDivision           | Client Management                        |          |
+| RevSumCategory           | Ops Mgr CML                              |          |
+| FiscalYear               | FY19                                     |          |
+| FiscalQuarter            | FY19-Q1                                  |          |
+| FiscalMonth              | 00:00.0                                  |          |
+| BilledBudget             |                                          |          |
+| ETLDate                  | 00:00.0                                  |          |
+| ProductFamily            | Sys Ctr Ops Mgr Clt Mgmt Lic             |          |
+| Area                     | Australia                                |          |
+| Subsidiary               | Australia                                |          |
+| SummarySegment           | Small, Medium & Corporate Public  Sector | 客户属性 |
+| Segment                  | Small, Medium & Corporate  Education     |          |
+| SubSegment               | SM&C Education - SMB                     |          |
+| SolutionArea             | Modern Work                              |          |
+| CommercialWorkload       | MW On-Prem                               |          |
+| BilledRevenue            | 0.1239                                   |          |
+| ActualBilledRevenue      | 0.1239                                   |          |
+| ScheduledBilledRevenue   |                                          |          |
+| QualifiedPipeline        |                                          |          |
+| CommittedAndRiskPipeline |                                          |          |
+| RunRateProjections       |                                          |          |
+| SecurityBilledBudget     |                                          |          |
 
 # Assignment 1
 
