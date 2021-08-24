@@ -4,7 +4,7 @@
 
 
 
-## 00.01 view
+## 00.01 view function
 
 vw_function:  The latest data [Actually Today left outer Yesterday ] 
 
@@ -33,6 +33,31 @@ Functions that do not need vw but still the latest:
 | Calendar() | Person() | Geography | ProductWorkload() |
 | ---------- | -------- | --------- | ----------------- |
 |            |          |           |                   |
+
+
+
+## 00.02 Product 
+
+O365_core/M365_core(similar product): 3 subproduct for personal, Enterprise[E5] and  Family[E3] : [Office 365 Login | Microsoft Office](https://www.office.com/)
+
+AVD: Azure virtual Desktop
+
+WVD: Windows Virtual Desktop
+
+
+
+## 00.03 Fiscal Year
+
+A New Fiscal Year starts from July, Fiscal year 2021starts from July 1st, 2021.
+
+| Quarter | End Month |
+| ------- | --------- |
+| Q1      | Sep.      |
+| Q2      | Dec.      |
+| Q3      | Mar       |
+| Q4      | Jun       |
+
+
 
 # 01 Opportunity
 
@@ -97,6 +122,8 @@ vwOpportunityPipeline()
 
 指真实收入
 
+TPID is not primary key, there's no primary key in billed revenue
+
 |                         | Sample 1                          | sample 2                                | Note               |
 | :---------------------- | --------------------------------- | --------------------------------------- | ------------------ |
 | CommercialWorkload      | M365 Suites E5                    | M365 Suites E5                          |                    |
@@ -129,6 +156,8 @@ vwOpportunityPipeline()
 ## 03.05 vwBilledBudget()
 
 Target revenue: 某地区某月的希望销售额
+
+billed budget is kinda like target that sales teams set, like goals. It just has several dimensions to break it down such as product, segment, area, etc
 
 | Issue                    |                                          | Note     |
 | ------------------------ | ---------------------------------------- | -------- |
