@@ -26,50 +26,46 @@ The in-depth understanding of POWER BI usage. Continuous Update
 
 ## 01.02 <span style="background-color:Tomato;">M Function</span>
 
-- M函数对大小写敏感，每一个字母必须按函数规范书写，第一个字母都是大写
+1. M函数对大小写敏感，每一个字母必须按函数规范书写，第一个字母都是大写
 
-- 表被称为Table，每行的内容是一个Record，每列的内容是一个List
+2. 表被称为Table，每行的内容是一个Record，每列的内容是一个List
 
-- 行标用大括号{ }，比如取第一行的内容：=表{0} //PQ的第一行从0开始
+3. 行标用大括号{ }，比如取第一行的内容：=表{0} //PQ的第一行从0开始
 
-- 列标用中括号[ ]，比如取自定义列的内容：=表[自定义]
+4. 列标用中括号[ ]，比如取自定义列的内容：=表[自定义]
 
-- 取第一行自定义列的内容：=表{0}[自定义]
+5. 取第一行自定义列的内容：=表{0}[自定义]
 
-  
+6. 聚合函数：
 
-  
+   > 求和：List.Sum()
+   > 求最小值：List.Min()
+   > 求最大值：List.Max()
+   > 求平均值：List.Average()
 
-  - 聚合函数：
+   文本函数：
 
-  > 求和：List.Sum()
-  > 求最小值：List.Min()
-  > 求最大值：List.Max()
-  > 求平均值：List.Average()
+   > 求文本长度：Text.Length()
+   > 去文本空格：Text.Trim()
+   > 取前n个字符：Text.Start(文本,n)
+   > 取后n个字符：Text.End(文本,n)
 
-  
+   提取数据函数：
 
-  - 文本函数：
+   > 从Excel表中提取数据：Excel.Workbook()
+   > 从Csv/Txt中提取数据：Csv.Document()
 
-  > 求文本长度：Text.Length()
-  > 去文本空格：Text.Trim()
-  > 取前n个字符：Text.Start(文本,n)
-  > 取后n个字符：Text.End(文本,n)
+   条件函数：
 
-  
+   > if else then （相当于Excel中的IF)
 
-  - 提取数据函数：
-
-  > 从Excel表中提取数据：Excel.Workbook()
-  > 从Csv/Txt中提取数据：Csv.Document()
-
-  
-
-  - 条件函数：
-
-  > if else then （相当于Excel中的IF)
+7. 
 
 # 02 Data cleaning using Power Query Editor
+
+
+
+
 
 ## 02.01 Transform
 
@@ -130,7 +126,7 @@ Transform&rarr;  Text column &rarr; transpose
 
 ---
 
-## 
+# 03 Modeling
 
 
 

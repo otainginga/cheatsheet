@@ -44,7 +44,11 @@ AVD: Azure virtual Desktop
 
 WVD: Windows Virtual Desktop
 
+ACR: *Azure* Committed Revenue
 
+
+
+Windows 365[Cloud PC]
 
 ## 00.03 Fiscal Year
 
@@ -56,6 +60,48 @@ A New Fiscal Year starts from July, Fiscal year 2021starts from July 1st, 2021.
 | Q2      | Dec.      |
 | Q3      | Mar       |
 | Q4      | Jun       |
+
+## 00.04 File Management& Information
+
+MWSData: by ETL tools, No manual changes.
+
+MWSWorkData: Create your functions here.
+
+```R
+.create-or-alter function with (folder = "Adhoc/v-wenbosun", skipvalidation = "true") GetUnassignedAccoutOpp() {
+
+PUT_YOUR_FUNCTION_HERE
+    
+}
+```
+
+
+
+###  OWNED FUNCTIONS[1]
+
+```R
+.create-or-alter function with (folder = "Adhoc/v-wenbosun", skipvalidation = "true") GetUnassignedAccoutOpp() {
+    
+database("MWSData").vwOpportunity()
+| where TPID != 0
+| where OpportunityOwner != "UNKNOWN"
+| join kind=leftanti database("MWSData").vwAccountSellerAssignment() on $left.OpportunityOwner == $right.EmailAlias, TPID
+| join kind=inner database("MWSData").Person() on $left.OpportunityOwner == $right.Alias
+| project CRMOpportunityID, MSXStatus, OpportunityDueDate, TPID, BusinessType, OpportunityOwner, StandardTitle, Qualifier1, Qualifier2
+    
+}
+```
+
+
+
+# 005 Basic info for the table
+
+```KQL
+.show function() 
+| project Folder
+
+
+```
 
 
 
