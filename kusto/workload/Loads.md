@@ -238,6 +238,34 @@ billed budget is kinda like target that sales teams set, like goals. It just has
 | RunRateProjections       |                                          |          |
 | SecurityBilledBudget     |                                          |          |
 
+
+
+
+
+
+
+# 77 Kusto Usage
+
+## 77.01 Join
+
+如果未指定 `kind`，则默认的联接风格为 `innerunique`
+
+[join 运算符 - Azure 数据资源管理器 | Microsoft Docs](https://docs.microsoft.com/zh-cn/azure/data-explorer/kusto/query/joinoperator?pivots=azuredataexplorer)
+
+| 联接风格                                                     | 输出记录                                                     |
+| :----------------------------------------------------------- | :----------------------------------------------------------- |
+| `kind=leftanti`,                                             | 返回左侧中在**右侧没有匹配项**的所有记录,仅会返回左侧的列。  |
+| `kind=rightanti`, ``                                         | 返回右侧中在左侧没有匹配项的所有记录。仅会返回左侧的列。     |
+| `kind=leftantisemi`                                          | 左半联接返回左侧中在右侧具有匹配记录的所有记录。 仅会返回左侧的列。 |
+| `kind=rightantisemi`                                         |                                                              |
+| `kind` 未指定，`kind=innerunique`                            | **左侧中仅有一行与 `on` 键的每个值匹配**。 输出包含一行，用于此行与右侧行的每一个匹配项。*[默认联接在左侧对联接键执行重复数据删除后（删除重复数据时会保留第一个记录）执行内联]* |
+| `kind=leftsemi`                                              | 返回**左侧中在右侧具有匹配项**的所有记录。                   |
+| `kind=rightsemi`                                             | 返回右侧中在左侧具有匹配项的所有记录。                       |
+| `kind=inner`                                                 | 输出中包含一行，该行对应于<u>左右匹配行</u>的**每种组合。**  |
+| `kind=leftouter`（或 `kind=rightouter` 或 `kind=fullouter`） | 包含的**一行对应于左侧和右侧的每一行**，即使没有匹配项。 不匹配的输出单元格包含 null。*[表 X 和 Y 的leftouter Join的结果始终包含左表 (X) 的所有记录，即使联接条件在右表 (Y) 中未找到任何匹配记录]* |
+| `fullouter`                                                  | 对于表中缺少匹配行的每个列，结果集都会有 `null` 值           |
+| `kind = cross`                                               | Kusto 本身不提供交叉联接风格。 无法用 `kind=cross` 来标记运算符。 |
+
 # Assignment 1
 
 
