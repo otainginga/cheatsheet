@@ -96,10 +96,17 @@ database("MWSData").vwOpportunity()
 
 # 005 Basic info for the table
 
-```KQL
+```R
+# show current database
+print current_database()
+
+# show the base folder
 .show function() 
 | project Folder
 
+# show the base folder 2
+.show() table() details
+| project Folder
 
 ```
 
