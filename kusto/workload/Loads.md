@@ -4,11 +4,17 @@
 
 
 
+## 00.00 Work Contents
+
+Data Analyst, MW&S(Modern Work & Security)
+
+
+
 ## 00.01 view function
 
 vw_function:  The latest data [Actually Today left outer Yesterday ] 
 
-<img src="https://miro.medium.com/max/1400/1*UAPgZRnhFG29C0nDFi5D0A.png" alt="What is the difference between an inner and an outer join in SQL? | by Kate  Marie Lewis | Towards Data Science" style="zoom:33%;" />
+
 
 ```KQL
 vwOpportunity(earlierThan:datetime=datetime(2099-12-31T00:00:00.0000000Z), snapshotIndex:int=0)	"{
@@ -37,6 +43,10 @@ Functions that do not need vw but still the latest:
 
 
 ## 00.02 Product 
+
+
+
+
 
 O365_core/M365_core(similar product): 3 subproduct for personal, Enterprise[E5] and  Family[E3] : [Office 365 Login | Microsoft Office](https://www.office.com/)
 
@@ -75,6 +85,12 @@ PUT_YOUR_FUNCTION_HERE
 }
 ```
 
+Extract data ffrom other database/cloud:
+
+```
+cluster("Cluster2").database("SomeDB").Table2
+```
+
 
 
 ###  OWNED FUNCTIONS[1]
@@ -91,6 +107,22 @@ database("MWSData").vwOpportunity()
     
 }
 ```
+
+## 00.05 Data Type
+
+Kusto 不支持用户定义的数据类型。所有非字符串数据类型都包括一个特殊的“null”值，它表示缺少数据或数据不匹配
+
+| 类型      | bool | datetime | dynamic                             | guid | int  | long | real | string | timespan | decimal |
+| --------- | ---- | -------- | ----------------------------------- | ---- | ---- | ---- | ---- | ------ | -------- | ------- |
+| gettype() | int8 | datetime | array 或 dictionary，或者任何其他值 | guid | int  | long | real | string | timespan | decimal |
+
+
+
+## 00.06 Special Function
+
+### 00.06.01 Toscalar()
+
+### 00.06.02 materialize()
 
 
 
@@ -118,15 +150,108 @@ vwopportuity: The properties of a opportunity ID.
 
 vwFactOpportunityPipeline()
 
+| Issue                         | Sample 1                                                     | Sample 2                                                     | Note            |
+| ----------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | --------------- |
+| ETLDate                       | 00:00.0                                                      | 00:00.0                                                      |                 |
+| AreaShortName                 | Germany                                                      | GCR                                                          |                 |
+| Subsidiary                    | Germany                                                      | China                                                        |                 |
+| TopParent                     | Unknown                                                      | Unknown                                                      |                 |
+| TPID                          | 0                                                            | 0                                                            |                 |
+| CRMOpportunityID              | 7-UP3O4JIWH                                                  | 7-SUOMKBJYZ                                                  |                 |
+| OpportunityName               | RCD - IB Wallner - Microsoft 365 â€“ Kontaktaufnahme - alboscai | Signed up For Office 365 Enterprise  E3 Trial                |                 |
+| OpportunityCreatedDate        | 00:00.0                                                      | 00:00.0                                                      |                 |
+| OpportunityDueDate            | 00:00.0                                                      | 00:00.0                                                      |                 |
+| OpportunityCloseDate          | 00:00.0                                                      | 0001-01-01 00:00:00.0000000                                  |                 |
+| MSXStatus                     | Lost                                                         | Open                                                         | {lost/win/open} |
+| CRMHyperlink                  | https://microsoftsales.crm.dynamics.com/main.aspx?appid=fe0c3504-3700-e911-a849-000d3a10b7cc&pagetype=entityrecord&etn=opportunity&id=5ebae664-c806-ea11-a811-000d3a8ccf2f | https://microsoftsales.crm.dynamics.com/main.aspx?appid=fe0c3504-3700-e911-a849-000d3a10b7cc&pagetype=entityrecord&etn=opportunity&id=1461d329-4250-e911-a850-000d3a10b05d |                 |
+| SalesUnit                     | Not Mapped                                                   | Not Mapped                                                   |                 |
+| DaysInSalesStage              | 649                                                          | 882                                                          |                 |
+| SalesStage                    | Prove Value 60%                                              | Develop Strategy 20%                                         |                 |
+| ForecastRecommendation        | Committed At Risk                                            | Uncommitted                                                  |                 |
+| ForecastComments              | AB - 15/Oct - 15.Oct.2020     No answer     checked Tennant     no action     AB - 17/Sep - 05. MAR     - NA          C - 8 JAN          PARTNERS:     ma-edv     Infraserv     (3rd customer partner)          14.11     - buying SQL server     - sending contact     - sending tech offers     - x9 ProPlus     - xCall Licenses     - told him about diff office plans |                                                              |                 |
+| SummarySegment                | Small, Medium & Corporate Commercial                         | Small, Medium & Corporate  Commercial                        |                 |
+| Segment                       | Small, Medium & Corporate Commercial                         | Small, Medium & Corporate  Commercial                        |                 |
+| SubSegment                    | SM&C Commercial - SMB                                        | SM&C Commercial - SMB                                        |                 |
+| CRMAccount                    | IB Wallner                                                   | ç‘žå£«å†ä¿é™©è‚¡ä»½æœ‰é™å…¬å¸åŒ—äº¬åˆ†å…¬å¸                  |                 |
+| ETLDate1                      | 00:00.0                                                      | 00:00.0                                                      |                 |
+| FieldPrimarySegment           | Commercial                                                   | Commercial                                                   |                 |
+| FieldSuperSummarySegment      | SM&C                                                         | SM&C                                                         |                 |
+| FieldSegment                  | SM&C SMB                                                     | SM&C SMB                                                     |                 |
+| FieldSubSegment               | SM&C Commercial - SMB                                        | SM&C Commercial - SMB                                        |                 |
+| OpportunityDesc               | OfficeProPLus. Windows, Server                               | 365                                                          |                 |
+| CreatedBy                     | alboscai                                                     | a64d5bc2f0d241bcac649426f3ac6c3fv-wenmya                     |                 |
+| CreatedByGroup                | SMC                                                          |                                                              |                 |
+| CreatedByStandardTitleGroup   |                                                              | Other                                                        |                 |
+| OpportunityOwner              | ALBOSCAI                                                     | ZHAYING                                                      |                 |
+| OpportunityOwnerStandardTitle | Digital Sales Representative                                 | Digital Sales Representative                                 |                 |
+| OwnershipGroup                | SMC                                                          | SMC                                                          |                 |
+| PendingCloseStatus            |                                                              |                                                              |                 |
+| PrimaryPartnerName            | Infraserv GmbH & Co. Gendorf KG (Germany)                    | Microsoft Corporation                                        |                 |
+| PrimaryCompetitor             |                                                              |                                                              |                 |
+| CompeteThreatLevel            | UNKNOWN                                                      | UNKNOWN                                                      |                 |
+| LicensingProgram              | Cloud Solution Provider                                      | Online                                                       |                 |
+| LicensingSubType              | Cloud Solution Provider New                                  | Existing - New Contract                                      |                 |
+| WorkloadType                  | UNKNOWN                                                      | UNKNOWN                                                      |                 |
+| WorkloadCapability            | UNKNOWN                                                      | UNKNOWN                                                      |                 |
+| WorkloadDetail                | UNKNOWN                                                      | UNKNOWN                                                      |                 |
+| ClosePlan                     | UNKNOWN                                                      | UNKNOWN                                                      |                 |
+| GBBAttachFlag                 | No                                                           | No                                                           |                 |
+| PrimarySolutionArea           | Modern Work                                                  | Modern Work                                                  |                 |
+| OtherCompetitor               |                                                              |                                                              |                 |
+| SalesPlayChecklist            | UNKNOWN                                                      | UNKNOWN                                                      |                 |
+| DetailPricingLevel            | Cloud Solution Provider New                                  | MOSP Baseline Renewal Recurring                              |                 |
+| SummaryPricingLevel           | Cloud Solution Provider                                      | Online Services Baseline                                     |                 |
+| ReportingPricingLevel         | Cloud Solution Provider                                      | Online Services                                              |                 |
+| ReportingSummaryPricingLevel  | Cloud Solution Provider                                      | Online Services                                              |                 |
+| BusinessType                  | New                                                          | New                                                          |                 |
+| QualifiedPipelineFlag         | No                                                           | No                                                           |                 |
+| PriceListType                 | Product Family                                               | Product Family                                               |                 |
+| OpportunityModifiedDate       | 00:00.0                                                      | 00:00.0                                                      |                 |
+| ForecastCommentsModifiedBy    | alboscai                                                     |                                                              |                 |
+| ForecastCommentsModifiedDate  | 00:00.0                                                      | 00:00.0                                                      |                 |
+| CRMAccount1                   | IB Wallner                                                   | ç‘žå£«å†ä¿é™©è‚¡ä»½æœ‰é™å…¬å¸åŒ—äº¬åˆ†å…¬å¸                  |                 |
 
 
 
+# 02 Engagements
 
-# 02 Engagement
+This is a chart for products which has a property of  **subscription**, which means, if we have a stable relationship with a company (got subscription each month), we will call it a good engagement. 
 
+| Issue                             | Sample 1                                                     | Sample 2                                                     | Note |
+| --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---- |
+| AreaShortName                     | Canada                                                       | US                                                           |      |
+| Subsidiary                        | Canada                                                       | United States                                                |      |
+| TopParent                         | FARM CREDIT CANADA                                           | MONTGOMERY COLLABORATION                                     |      |
+| TPID                              | 9030813                                                      | 9004507                                                      |      |
+| CRMEngagementID                   | 7-UNMWBOO6D                                                  | 7-UXYVQ2RBQ                                                  |      |
+| EngagementName                    | FCC: Azure Sentinel                                          | Azure Sentinel Project at Montgomery  Collaboration          |      |
+| EngagementStatus                  | In Progress                                                  | Closed-Canceled                                              |      |
+| EngagementHealth                  | Yellow                                                       | Green                                                        |      |
+| EngagementStage                   | 2-VALIDATE                                                   | 3-COMMIT                                                     |      |
+| EngagementEstimatedStartDate      | 00:00.0                                                      | 00:00.0                                                      |      |
+| EngagementEstimatedCompletionDate | 00:00.0                                                      | 00:00.0                                                      |      |
+| EngagementCreatedBy               | ankmishr                                                     | v-mdzia                                                      |      |
+| EngagementCreatedByStandardTitle  | Specialist                                                   | Sales Manager                                                |      |
+| EngagementOwner                   | mibonnea                                                     | mbakert                                                      |      |
+| EngagementOwnerStandardTitle      | Specialist                                                   | Sales Manager                                                |      |
+| EngagementOwnershipGroup          | STU                                                          | ATU                                                          |      |
+| EngagementURL                     | https://microsoftsales.crm.dynamics.com/main.aspx?appid=fe0c3504-3700-e911-a849-000d3a10b7cc&pagetype=entityrecord&etn=msp_engagement&id=cfe4d8c8-3702-ea11-a863-000d3a10a7ae | https://microsoftsales.crm.dynamics.com/main.aspx?appid=fe0c3504-3700-e911-a849-000d3a10b7cc&pagetype=entityrecord&etn=msp_engagement&id=99f71f56-a322-ea11-a811-000d3a8cc796 |      |
+| EngagementAgeGroup                | 120+                                                         | 30 to 60                                                     |      |
+| EngagementPrimaryCompetitor       | AWS \| Other                                                 | None                                                         |      |
+| CompetitorThreatLevel             | High                                                         | Low/ None                                                    |      |
+| MSServicesInvolved                | Microsoft Support                                            |                                                              |      |
+| SalesUnit                         | Canada.Corp                                                  | USA - Education                                              |      |
+| GBBAttachFlag                     | No                                                           | No                                                           |      |
+| ETLDate                           | 00:00.0                                                      | 00:00.0                                                      |      |
+| EngagementCreatedDate             | 00:00.0                                                      | 00:00.0                                                      |      |
+| EngagementPartnerName             | Microsoft Services                                           | UNKNOWN                                                      |      |
+| EngagementPartnerAttachFlag       | Yes                                                          | No                                                           |      |
+| EngagementSalesPlayChecklist      | Other                                                        | Other                                                        |      |
+| EngagementStageStartedOn          | 00:00.0                                                      | 00:00.0                                                      |      |
+| MCSAttachFlag                     | Yes                                                          | No                                                           |      |
+| MCSEngagedFlag                    | No                                                           | No                                                           |      |
 
-
-# 03 Other Charts
+# 03 Other Functions
 
 
 
@@ -140,7 +265,7 @@ vwFactOpportunityPipeline()
 
 ## 03.02 vwOpportunityPipeline()
 
-1. **ID, Fiscal_Time, Product_category,[ Pipeline**: 预测收入]
+1. **ID, Fiscal_Time, Product_category,[ Pipeline**: 预测收入/未来收入]
 2. Different categories of the product: The product information, if it sells more than 1 product, it will bring out more than 1 records.
 
 ```
@@ -240,11 +365,79 @@ billed budget is kinda like target that sales teams set, like goals. It just has
 
 
 
+# 04 Other charts
+
+##### 04.01 Engagement Milestone
+
+| Issue                                 |                                     | Sample 2                            | Note |
+| ------------------------------------- | ----------------------------------- | ----------------------------------- | ---- |
+| CRMEngagementID                       | 7-WBQKLZMZX                         | 7-W457C6KF5                         |      |
+| CRMEngagementMilestoneID              | 7-WBQL7S2P7                         | 7-W457PDWJ3                         |      |
+| EngagementMilestoneName               | Windows Virtual Desktop POC         | PoC                                 |      |
+| EngagementMilestoneOwner              | JOHNWILS                            | CMANSKE                             |      |
+| EngagementMilestoneOwnerStandardTitle | Specialist                          | Specialist                          |      |
+| EngagementMilestoneCategory           | Pre-Commit: POC/Pilot/MVP           | Pre-Commit: POC/Pilot/MVP           |      |
+| EngagementMilestoneWorkload           | Infra: Native Azure Virtual Desktop | Infra: Native Azure Virtual Desktop |      |
+| EngagementMilestoneWorkloadType       | Azure                               | Azure                               |      |
+| EngagementMilestoneEstimatedDate      | 00:00.0                             | 00:00.0                             |      |
+| EngagementMilestoneStatus             | On Track                            | On Track                            |      |
+| EngagementMilestoneStatusReasonField  | UNKNOWN                             | UNKNOWN                             |      |
+| EngagementMilestoneNonRecurring       | No                                  | No                                  |      |
+| EngagementMilestoneHelpNeeded         | UNKNOWN                             | UNKNOWN                             |      |
+| ETLDate                               | 00:00.0                             | 00:00.0                             |      |
+| EngagementMilestoneCreatedBy          | JOHNWILS                            | CMANSKE                             |      |
+| EngagementMilestoneCreateDate         | 00:00.0                             | 00:00.0                             |      |
+| EngagementMilestoneOwnershipGroup     | STU                                 | STU                                 |      |
+
+## MAL
+
+##### MAL.01 TPAccount & Dash
+
+TPAccount: Important Customers
+
+TPAccountDash: TPAccount & nonimportant customers
+
+|                         | Sample 1                          | Sample 2                       | Note |
+| ----------------------- | --------------------------------- | ------------------------------ | ---- |
+| TPID                    | 642093                            | 642902                         |      |
+| TopParent               | UT-STATE GOVERNMENT               | OFFICE OF PERSONNEL MANAGEMENT |      |
+| TranslatedAccount       | UT-STATE GOVERNMENT               | OFFICE OF PERSONNEL MANAGEMENT |      |
+| HQDSFlag                | UNKNOWN                           | UNKNOWN                        |      |
+| AreaShortName           | US                                | US                             |      |
+| Subsidiary              | United States                     | United States                  |      |
+| Industry                | Critical Infrastructure           | Critical Infrastructure        |      |
+| SummarySegment          | Enterprise Public Sector          | Enterprise Public Sector       |      |
+| Segment                 | Major Public Sector               | Major Public Sector            |      |
+| SubSegment              | Major - State & Local Governments | Major - Federal Government     |      |
+| FieldSummarySegment     | Enterprise Public Sector          | Enterprise Public Sector       |      |
+| FieldSegment            | Major Public Sector               | Major Public Sector            |      |
+| FieldSubSegment         | Major - State & Local Governments | Major - Federal Government     |      |
+| MALFlag                 | Yes                               | Yes                            |      |
+| ETLDate                 | 00:00.0                           | 00:00.0                        |      |
+| SalesTerritory          | SLG.004.WST.004                   | FED.076.FCG.302                |      |
+| SalesUnit               | USA - SLG                         | USA - Federal                  |      |
+| ATS                     | JOBEAIRD                          | UNDEFINED                      |      |
+| ATU                     | SLG.004.WST                       | FED.076.FCG                    |      |
+| ATUGroup                | USA - SLG - Enterprise West       | USA - FED - Civilian           |      |
+| ATUManager              | MELISSAL                          | MEMCGRIF                       |      |
+| AccountPositionCM01     | 1C                                | 1A                             |      |
+| AccountPositionJuneCY01 | 1B                                | 1B                             |      |
+| MALAM                   | DAVST                             | GRGEHRIN                       |      |
+| VerticalCategory        | Government Administration         | Government Administration      |      |
+| Vertical                | Public Administration             | Public Administration          |      |
+| GlobalSector            | Government                        | Government                     |      |
+
 
 
 
 
 # 77 Kusto Usage
+
+
+
+Each filter prefixed by the pipe character `|` is an instance of an *operator*, with some parameters. The input to the operator is the table that is the result of the preceding pipeline. In most cases, any parameters are [scalar expressions](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/scalar-data-types/) over the columns of the input. In a few cases, the parameters are the names of input columns, and in a few cases, the parameter is a second table. The result of a query is always a table, even if it only has one column and one row.
+
+`T` is used in query to denote the preceding pipeline or source table.
 
 ## 77.01 Join
 
@@ -266,11 +459,87 @@ billed budget is kinda like target that sales teams set, like goals. It just has
 | `fullouter`                                                  | 对于表中缺少匹配行的每个列，结果集都会有 `null` 值           |
 | `kind = cross`                                               | Kusto 本身不提供交叉联接风格。 无法用 `kind=cross` 来标记运算符。 |
 
+<img src="https://miro.medium.com/max/1400/1*UAPgZRnhFG29C0nDFi5D0A.png" alt="What is the difference between an inner and an outer join in SQL? | by Kate  Marie Lewis | Towards Data Science" style="zoom:33%;" />
+
+## 77.02 Querys
+
+[查询最佳做法 - Azure 数据资源管理器 | Microsoft Docs](https://docs.microsoft.com/zh-cn/azure/data-explorer/kusto/query/best-practices)
+
+
+
+
+
+
+
 # Assignment 1
 
+## Issue 1
+
+### I1.01 Engagement
 
 
-## T1-AVD Engagement
+
+
+
+| Engament  ID                                                 | Status                          | Close Quarter                   | Close Month                     | Engagement team  Full name                                   | Engagement team  Full Alias     | Engagement team  Standard Title | Engagement team  qualifier 2    | Qualified Role                                               | TPID                                                         | Top Parent Name               | Fiscal Quarter                | End of Quarter  Month                            | End of Quarter  Month ACR                                    | End of Quarter  Month ACR Cap                                | End of Previous  Quarter Month                               | End of Previous  Quarter Month ACR                           | Net ACR                                                      | Convertion Ratio            | Artificial Rev$  AVD                                     |
+| ------------------------------------------------------------ | ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------------------------------------ | ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ----------------------------- | ----------------------------- | ------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | --------------------------- | -------------------------------------------------------- |
+| 7-ABCDF                                                      | closed-completed                | FY-Q1                           | August                          | John Smith                                                   | JSM                             | Solution Area Specialists IC    | Modern Work                     | Yes                                                          | 10001                                                        | ABC                           | FY22-Q1                       | September                                        | $5,000                                                       | $5,000                                                       | June                                                         | $1,000                                                       | $4,000                                                       | 1.25                        | $                           60,000                       |
+| 7-ABCDF                                                      | closed-completed                | FY-Q1                           | August                          | Adam Johnson                                                 | AJO                             | Solution Area Specialists IC    | Security                        | Yes                                                          | 10001                                                        | ABC                           | FY22-Q1                       | September                                        | $5,000                                                       | $5,000                                                       | June                                                         | $1,000                                                       | $4,000                                                       | 1.25                        | $                           60,000                       |
+| 7-ABCDF                                                      | closed-completed                | FY-Q1                           | August                          | Mark Taylor                                                  | MTA                             | Solution Area Specialists IC    | Azure-Infrastructure            | No                                                           | 10001                                                        | ABC                           | FY22-Q1                       | September                                        | $5,000                                                       | $5,000                                                       | June                                                         | $1,000                                                       | $4,000                                                       | 1.25                        | $                           60,000                       |
+|                                                              |                                 |                                 |                                 |                                                              |                                 |                                 |                                 |                                                              |                                                              |                               |                               | December                                         | $5,000                                                       | $5,000                                                       | September                                                    | $5,000                                                       | $0                                                           | 1.25                        | $                                -                       |
+|                                                              |                                 |                                 |                                 |                                                              |                                 |                                 |                                 |                                                              |                                                              |                               |                               |                                                  |                                                              |                                                              |                                                              |                                                              |                                                              |                             |                                                          |
+| **pull  from data (engagement)**                             | **pull from data (engagement)** | **pull from data (engagement)** | **pull from data (engagement)** | **pull from data (engagement)**                              | **pull from data (engagement)** | **pull from data (engagement)** | **pull from data (engagement)** | **Calculated**                                               | **pull from data (TPID ACR)**                                | **pull from data (TPID ACR)** | **pull from data (TPID ACR)** | **pull from data (TPID ACR)**                    | **pull from data (TPID ACR)**                                | **Calculated**                                               | **pull from data (TPID ACR)**                                | **pull from data (TPID ACR)**                                | **Calculated**                                               | **Fixed Value**             | **Calculated**                                           |
+| Pull Engagements from workload Infra:  Windows Virtual Desktop (WVD) |                                 |                                 |                                 | Each one in the engagement team  shows up in a row. Other information repeats (ex engegement ID, Status, etc) |                                 |                                 |                                 | Only modern  work sellers are eligible to retire artifical Rev$  AVD. Outcome: Yes/No Flag | Customers information from the  TPID associated to the Engagement |                               |                               | Shows End of quarter month (Sep,  Dec, Mar, Jun) | Shows ACR from respective TPID  and Month. Consider      SL1 = Compute     Service Influencer = NATIVE WVD | if "end of quarter month  ACR" <1000, then ACR cap = 0     if "end of quarter month ACR" >=20,000, then ACR cap =  20,000     if "end of quarter month ACR" >= 1000 and <20000, then ACR  cap = "end of quarter month ACR" | Shows the end of previous  quarter month.     Ex: If End of quarter is FY22-September the end of previous quarter is  FY-21 July | Shows ACR from respective TPID  and Month of previous end of quarter. Consider      SL1 = Compute     Service Influencer = NATIVE WVD | Month ACR cap - End of previous  quarter Month ACR     (column Q minus column S). If NET ACR <0, then NET ACR=0 | Fixed value provided = 1.25 | =[Net ACR]*[Convertion  Ratio]*12,      if < 0, then = 0 |
+
+
+
+|                                      | Role summary                 | Qualifier 1    | Qualifier 2 |
+| ------------------------------------ | ---------------------------- | -------------- | ----------- |
+| Retiring Windows 365 quota with  AVD | Solution Area Specialists IC | NA             | Modern Work |
+| Solution  Area Specialists IC        | NA                           | Security       |             |
+| Solution  Area Specialists IC        | NA                           | MW-Surface     |             |
+| Technology  Specialists IC           | NA                           | Cloud Endpoint |             |
+
+
+
+
+
+### I2.02 Opportunity
+
+## 
+
+| CRM  opportunity ID                              | Status                           | Close Quarter                    | Close Month                      | Opportunity team  Full name                                  | Opportunity team  Full Alias     | Opportunity  team Standard Title | Opportunity team  qualifier 2    | Qualified Role                                               | TPID                                                         | Top Parent Name                 | Fiscal Quarter                  | Fiscal Month                    | Iniated Units                                                | Iniated Units  Cap                                           | Rate Card                  | Artificial ACR  W365                                    |
+| ------------------------------------------------ | -------------------------------- | -------------------------------- | -------------------------------- | ------------------------------------------------------------ | -------------------------------- | -------------------------------- | -------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------------- | ------------------------------------------------------- |
+| 7-ABCDF                                          | won                              | FY-Q1                            | August                           | John Smith                                                   | JSM                              | Solution Area Specialists IC     | Modern Work                      | No                                                           | 10001                                                        | ABC                             | FY22-Q1                         | August                          | 1,500                                                        | 1,500                                                        | $          24.00           | $           36,000                                      |
+| 7-ABCDF                                          | won                              | FY-Q1                            | August                           | Adam Johnson                                                 | AJO                              | Solution Area Specialists IC     | Security                         | No                                                           | 10001                                                        | ABC                             | FY22-Q1                         | August                          | 1,500                                                        | 1,500                                                        | $          24.00           | $           36,000                                      |
+| 7-ABCDF                                          | won                              | FY-Q1                            | August                           | Mark Taylor                                                  | MTA                              | Solution Area Specialists IC     | Azure-Infrastructure             | Yes                                                          | 10001                                                        | ABC                             | FY22-Q1                         | August                          | 1,500                                                        | 1,500                                                        | $          24.00           | $           36,000                                      |
+|                                                  |                                  |                                  |                                  |                                                              |                                  |                                  |                                  |                                                              |                                                              |                                 |                                 |                                 |                                                              |                                                              |                            |                                                         |
+|                                                  |                                  |                                  |                                  |                                                              |                                  |                                  |                                  |                                                              |                                                              |                                 |                                 |                                 |                                                              |                                                              |                            |                                                         |
+|                                                  |                                  |                                  |                                  |                                                              |                                  |                                  |                                  |                                                              |                                                              |                                 |                                 |                                 |                                                              |                                                              |                            |                                                         |
+| **pull  from data (opportunity)**                | **pull from data (opportunity)** | **pull from data (opportunity)** | **pull from data (opportunity)** | **pull from data (opportunity)**                             | **pull from data (opportunity)** | **pull from data (opportunity)** | **pull from data (opportunity)** | **Calculated**                                               | **pull from data (TPID Seats)**                              | **pull from data (TPID Seats)** | **pull from data (TPID Seats)** | **pull from data (TPID Seats)** | **pull from data (TPID Seats)**                              | **Calculated**                                               | **Fixed Value**            | **Calculated**                                          |
+| Pull  opportunity with Rev Sum Category=Cloud PC |                                  |                                  |                                  | Each one in the opportunity team  shows up in a row. Other information repeats (ex opportunity ID, Status, etc) |                                  |                                  |                                  | Only AZURE  sellers are eligible to retire artifical W365 ACR.  Outcome: Yes/No Flag | Customers information from the  TPID associated to the Opportunity |                                 |                                 |                                 | Shows Initiate units (seats) for  the TPID associated to the opportunity     Rev Sum Category = Cloud PC | if "intiate units"  <50, then units cap = 0     if "intiate units" >=1500 , then units cap = 1500     if "intiate units" >= 50 and <1500, then units cap =  "intiate units" | Fixed value provided = $24 | =[initiated units] * [Rate  Card],      if <0, then = 0 |
+
+
+
+|                                      | Role summary                 | Qualifier 1          | Qualifier 2          |
+| ------------------------------------ | ---------------------------- | -------------------- | -------------------- |
+| Retiring AVD quota with Windows  365 | Solution Area Specialists IC | NA                   | Azure-Infrastructure |
+| Cloud  Solution Architecture IC      | NA                           | Azure-Infrastructure |                      |
+| Cloud  Solution Architecture OPEX IC |                              | Azure-Infrastructure |                      |
+
+
+
+
+
+
+
+## Solution [I1]
+
+#### T1-AVD Engagement
+
+
+
+
 
 ```Kql
 # AVD Engagement
@@ -301,7 +570,7 @@ vwEngagementMilestone(azureSecOnly=false)
     )
 ```
 
-## T2-TP ACR FY21Q4
+#### T2-TP ACR FY21Q4
 
 ```Kql
 let endOfQuarterMonth = toscalar(datetime(2021-06-01));
@@ -351,7 +620,13 @@ currentACR
 
 
 
-## T3-W365 Opportunity
+## Solution [I2]
+
+
+
+
+
+#### T3-W365 Opportunity
 
 ```
 vwFactOpportunityPipeline()
@@ -387,7 +662,7 @@ vwFactOpportunityPipeline()
 
 
 
-## T4-TP CloudPC Seats FY22
+#### T4-TP CloudPC Seats FY22
 
 ```
 vwFactOpportunityPipeline()
@@ -414,6 +689,22 @@ vwFactOpportunityPipeline()
 ```
 
 
+
+## Sample Solution title
+
+| CRMEngagementID    | TPID | EngagementStatus | ClosedQuarter | ClosedMonth | Alias       | DisplayName | StandardTitle        | Qualifier1        | Qualifier2        | QualifiedRole |                           |
+| ------------------ | ---- | ---------------- | ------------- | ----------- | ----------- | ----------- | -------------------- | ----------------- | ----------------- | ------------- | ------------------------- |
+| CRM  Engagement ID | TPID | Status           |               |             | Owner Alias |             | Owner Standard Title | Owner Qualifier 1 | Owner Qualifier 2 |               | Estimated Completion Date |
+
+
+
+
+
+| CRMOpportunityID    | TPID | TopParent | MSXStatus | OpportunityDueDate | OpportunityCloseDate | ClosedQuarter | ClosedMonth | DisplayName | OpportunityTeamAlias | StandardTitle        | Qualifier1        | Qualifier2        | QualifiedRole |          |
+| ------------------- | ---- | --------- | --------- | ------------------ | -------------------- | ------------- | ----------- | ----------- | -------------------- | -------------------- | ----------------- | ----------------- | ------------- | -------- |
+| CRM  Opportunity ID | TPID |           | Status    | Business Type      |                      |               |             |             | Owner Alias          | Owner Standard Title | Owner Qualifier 1 | Owner Qualifier 2 |               | Due Date |
+
+# Assignment 2
 
 
 
@@ -449,16 +740,9 @@ Thanks,
 
 
 
-## Table title
+## 
 
-| CRMEngagementID    | TPID | EngagementStatus | ClosedQuarter | ClosedMonth | Alias       | DisplayName | StandardTitle        | Qualifier1        | Qualifier2        | QualifiedRole |                           |
-| ------------------ | ---- | ---------------- | ------------- | ----------- | ----------- | ----------- | -------------------- | ----------------- | ----------------- | ------------- | ------------------------- |
-| CRM  Engagement ID | TPID | Status           |               |             | Owner Alias |             | Owner Standard Title | Owner Qualifier 1 | Owner Qualifier 2 |               | Estimated Completion Date |
+| CRM  Opportunity ID | Status | Due Date | TPID | Business Type | Owner  Alias | Owner Standard Title | Owner  Qualifier 1 | Owner Qualifier 2 |
+| ------------------- | ------ | -------- | ---- | ------------- | ------------ | -------------------- | ------------------ | ----------------- |
+|                     |        |          |      |               |              |                      |                    |                   |
 
-
-
-
-
-| CRMOpportunityID    | TPID | TopParent | MSXStatus | OpportunityDueDate | OpportunityCloseDate | ClosedQuarter | ClosedMonth | DisplayName | OpportunityTeamAlias | StandardTitle        | Qualifier1        | Qualifier2        | QualifiedRole |          |
-| ------------------- | ---- | --------- | --------- | ------------------ | -------------------- | ------------- | ----------- | ----------- | -------------------- | -------------------- | ----------------- | ----------------- | ------------- | -------- |
-| CRM  Opportunity ID | TPID |           | Status    | Business Type      |                      |               |             |             | Owner Alias          | Owner Standard Title | Owner Qualifier 1 | Owner Qualifier 2 |               | Due Date |

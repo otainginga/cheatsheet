@@ -128,9 +128,9 @@ Transform&rarr;  Text column &rarr; transpose
 
 # 03 Modeling
 
+![powerbi_modeling.png](https://github.com/otainginga/Image/blob/main/powerbi_modeling.png?raw=true)
 
-
-
+Measure & DAX
 
 
 
