@@ -1,4 +1,4 @@
-
+<span style="background-color: tomato;">HINT: THEME: Drake Juejin</span>
 
 # 00 Basic Info 
 
@@ -122,6 +122,8 @@ Kusto 不支持用户定义的数据类型。所有非字符串数据类型都�
 
 ### 00.06.01 Toscalar()
 
+标量运算
+
 ### 00.06.02 materialize()
 
 
@@ -150,66 +152,66 @@ vwopportuity: The properties of a opportunity ID.
 
 vwFactOpportunityPipeline()
 
-| Issue                         | Sample 1                                                     | Sample 2                                                     | Note            |
-| ----------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | --------------- |
-| ETLDate                       | 00:00.0                                                      | 00:00.0                                                      |                 |
-| AreaShortName                 | Germany                                                      | GCR                                                          |                 |
-| Subsidiary                    | Germany                                                      | China                                                        |                 |
-| TopParent                     | Unknown                                                      | Unknown                                                      |                 |
-| TPID                          | 0                                                            | 0                                                            |                 |
-| CRMOpportunityID              | 7-UP3O4JIWH                                                  | 7-SUOMKBJYZ                                                  |                 |
-| OpportunityName               | RCD - IB Wallner - Microsoft 365 â€“ Kontaktaufnahme - alboscai | Signed up For Office 365 Enterprise  E3 Trial                |                 |
-| OpportunityCreatedDate        | 00:00.0                                                      | 00:00.0                                                      |                 |
-| OpportunityDueDate            | 00:00.0                                                      | 00:00.0                                                      |                 |
-| OpportunityCloseDate          | 00:00.0                                                      | 0001-01-01 00:00:00.0000000                                  |                 |
-| MSXStatus                     | Lost                                                         | Open                                                         | {lost/win/open} |
-| CRMHyperlink                  | https://microsoftsales.crm.dynamics.com/main.aspx?appid=fe0c3504-3700-e911-a849-000d3a10b7cc&pagetype=entityrecord&etn=opportunity&id=5ebae664-c806-ea11-a811-000d3a8ccf2f | https://microsoftsales.crm.dynamics.com/main.aspx?appid=fe0c3504-3700-e911-a849-000d3a10b7cc&pagetype=entityrecord&etn=opportunity&id=1461d329-4250-e911-a850-000d3a10b05d |                 |
-| SalesUnit                     | Not Mapped                                                   | Not Mapped                                                   |                 |
-| DaysInSalesStage              | 649                                                          | 882                                                          |                 |
-| SalesStage                    | Prove Value 60%                                              | Develop Strategy 20%                                         |                 |
-| ForecastRecommendation        | Committed At Risk                                            | Uncommitted                                                  |                 |
-| ForecastComments              | AB - 15/Oct - 15.Oct.2020     No answer     checked Tennant     no action     AB - 17/Sep - 05. MAR     - NA          C - 8 JAN          PARTNERS:     ma-edv     Infraserv     (3rd customer partner)          14.11     - buying SQL server     - sending contact     - sending tech offers     - x9 ProPlus     - xCall Licenses     - told him about diff office plans |                                                              |                 |
-| SummarySegment                | Small, Medium & Corporate Commercial                         | Small, Medium & Corporate  Commercial                        |                 |
-| Segment                       | Small, Medium & Corporate Commercial                         | Small, Medium & Corporate  Commercial                        |                 |
-| SubSegment                    | SM&C Commercial - SMB                                        | SM&C Commercial - SMB                                        |                 |
-| CRMAccount                    | IB Wallner                                                   | ç‘žå£«å†ä¿é™©è‚¡ä»½æœ‰é™å…¬å¸åŒ—äº¬åˆ†å…¬å¸                  |                 |
-| ETLDate1                      | 00:00.0                                                      | 00:00.0                                                      |                 |
-| FieldPrimarySegment           | Commercial                                                   | Commercial                                                   |                 |
-| FieldSuperSummarySegment      | SM&C                                                         | SM&C                                                         |                 |
-| FieldSegment                  | SM&C SMB                                                     | SM&C SMB                                                     |                 |
-| FieldSubSegment               | SM&C Commercial - SMB                                        | SM&C Commercial - SMB                                        |                 |
-| OpportunityDesc               | OfficeProPLus. Windows, Server                               | 365                                                          |                 |
-| CreatedBy                     | alboscai                                                     | a64d5bc2f0d241bcac649426f3ac6c3fv-wenmya                     |                 |
-| CreatedByGroup                | SMC                                                          |                                                              |                 |
-| CreatedByStandardTitleGroup   |                                                              | Other                                                        |                 |
-| OpportunityOwner              | ALBOSCAI                                                     | ZHAYING                                                      |                 |
-| OpportunityOwnerStandardTitle | Digital Sales Representative                                 | Digital Sales Representative                                 |                 |
-| OwnershipGroup                | SMC                                                          | SMC                                                          |                 |
-| PendingCloseStatus            |                                                              |                                                              |                 |
-| PrimaryPartnerName            | Infraserv GmbH & Co. Gendorf KG (Germany)                    | Microsoft Corporation                                        |                 |
-| PrimaryCompetitor             |                                                              |                                                              |                 |
-| CompeteThreatLevel            | UNKNOWN                                                      | UNKNOWN                                                      |                 |
-| LicensingProgram              | Cloud Solution Provider                                      | Online                                                       |                 |
-| LicensingSubType              | Cloud Solution Provider New                                  | Existing - New Contract                                      |                 |
-| WorkloadType                  | UNKNOWN                                                      | UNKNOWN                                                      |                 |
-| WorkloadCapability            | UNKNOWN                                                      | UNKNOWN                                                      |                 |
-| WorkloadDetail                | UNKNOWN                                                      | UNKNOWN                                                      |                 |
-| ClosePlan                     | UNKNOWN                                                      | UNKNOWN                                                      |                 |
-| GBBAttachFlag                 | No                                                           | No                                                           |                 |
-| PrimarySolutionArea           | Modern Work                                                  | Modern Work                                                  |                 |
-| OtherCompetitor               |                                                              |                                                              |                 |
-| SalesPlayChecklist            | UNKNOWN                                                      | UNKNOWN                                                      |                 |
-| DetailPricingLevel            | Cloud Solution Provider New                                  | MOSP Baseline Renewal Recurring                              |                 |
-| SummaryPricingLevel           | Cloud Solution Provider                                      | Online Services Baseline                                     |                 |
-| ReportingPricingLevel         | Cloud Solution Provider                                      | Online Services                                              |                 |
-| ReportingSummaryPricingLevel  | Cloud Solution Provider                                      | Online Services                                              |                 |
-| BusinessType                  | New                                                          | New                                                          |                 |
-| QualifiedPipelineFlag         | No                                                           | No                                                           |                 |
-| PriceListType                 | Product Family                                               | Product Family                                               |                 |
-| OpportunityModifiedDate       | 00:00.0                                                      | 00:00.0                                                      |                 |
-| ForecastCommentsModifiedBy    | alboscai                                                     |                                                              |                 |
-| ForecastCommentsModifiedDate  | 00:00.0                                                      | 00:00.0                                                      |                 |
-| CRMAccount1                   | IB Wallner                                                   | ç‘žå£«å†ä¿é™©è‚¡ä»½æœ‰é™å…¬å¸åŒ—äº¬åˆ†å…¬å¸                  |                 |
+| Issue                                                        | Sample 1                                                     | Sample 2                                                     | Note                                             |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------ |
+| ETLDate                                                      | 00:00.0                                                      | 00:00.0                                                      |                                                  |
+| AreaShortName                                                | Germany                                                      | GCR                                                          |                                                  |
+| Subsidiary                                                   | Germany                                                      | China                                                        |                                                  |
+| TopParent                                                    | Unknown                                                      | Unknown                                                      |                                                  |
+| <span style="background-color: tomato;">TPID</span>          | 0                                                            | 0                                                            | **缺失值：<br />TPID !=0**                       |
+| <span style="background-color: tomato;">CRMOpportunityID</span> | 7-UP3O4JIWH                                                  | 7-SUOMKBJYZ                                                  |                                                  |
+| OpportunityName                                              | RCD - IB Wallner - Microsoft 365 â€“ Kontaktaufnahme - alboscai | Signed up For Office 365 Enterprise  E3 Trial                |                                                  |
+| OpportunityCreatedDate                                       | 00:00.0                                                      | 00:00.0                                                      |                                                  |
+| OpportunityDueDate                                           | 00:00.0                                                      | 00:00.0                                                      |                                                  |
+| OpportunityCloseDate                                         | 00:00.0                                                      | 0001-01-01 00:00:00.0000000                                  |                                                  |
+| MSXStatus                                                    | Lost                                                         | Open                                                         | **{lost/win/open}**                              |
+| CRMHyperlink                                                 | [Link 1](https://microsoftsales.crm.dynamics.com/main.aspx?appid=fe0c3504-3700-e911-a849-000d3a10b7cc&pagetype=entityrecord&etn=opportunity&id=5ebae664-c806-ea11-a811-000d3a8ccf2f) | [Link 2](https://microsoftsales.crm.dynamics.com/main.aspx?appid=fe0c3504-3700-e911-a849-000d3a10b7cc&pagetype=entityrecord&etn=opportunity&id=1461d329-4250-e911-a850-000d3a10b05d) |                                                  |
+| SalesUnit                                                    | Not Mapped                                                   | Not Mapped                                                   |                                                  |
+| DaysInSalesStage                                             | 649                                                          | 882                                                          |                                                  |
+| SalesStage                                                   | Prove Value 60%                                              | Develop Strategy 20%                                         |                                                  |
+| ForecastRecommendation                                       | Committed At Risk                                            | Uncommitted                                                  |                                                  |
+| ForecastComments                                             | AB - 15/Oct - 15.Oct.2020     No answer     checked Tennant     no action |                                                              |                                                  |
+| SummarySegment                                               | Small, Medium & Corporate Commercial                         | Small, Medium & Corporate  Commercial                        |                                                  |
+| Segment                                                      | Small, Medium & Corporate Commercial                         | Small, Medium & Corporate  Commercial                        |                                                  |
+| SubSegment                                                   | SM&C Commercial - SMB                                        | SM&C Commercial - SMB                                        |                                                  |
+| CRMAccount                                                   | IB Wallner                                                   | ç‘žå£«å†ä¿é™©è‚¡ä»½æœ‰é™å…¬å¸åŒ—äº¬åˆ†å…¬å¸                  |                                                  |
+| ETLDate1                                                     | 00:00.0                                                      | 00:00.0                                                      |                                                  |
+| FieldPrimarySegment                                          | Commercial                                                   | Commercial                                                   |                                                  |
+| FieldSuperSummarySegment                                     | SM&C                                                         | SM&C                                                         |                                                  |
+| FieldSegment                                                 | SM&C SMB                                                     | SM&C SMB                                                     |                                                  |
+| FieldSubSegment                                              | SM&C Commercial - SMB                                        | SM&C Commercial - SMB                                        |                                                  |
+| OpportunityDesc                                              | OfficeProPLus. Windows, Server                               | 365                                                          |                                                  |
+| CreatedBy                                                    | alboscai                                                     | a64d5bc2f0d241bcac649426f3ac6c3fv-wenmya                     |                                                  |
+| CreatedByGroup                                               | SMC                                                          |                                                              |                                                  |
+| CreatedByStandardTitleGroup                                  |                                                              | Other                                                        |                                                  |
+| OpportunityOwner                                             | ALBOSCAI                                                     | ZHAYING                                                      | **缺失值： <br />OpportunityOwner == "UNKNOWN"** |
+| OpportunityOwnerStandardTitle                                | Digital Sales Representative                                 | Digital Sales Representative                                 |                                                  |
+| OwnershipGroup                                               | SMC                                                          | SMC                                                          |                                                  |
+| PendingCloseStatus                                           |                                                              |                                                              |                                                  |
+| PrimaryPartnerName                                           | Infraserv GmbH & Co. Gendorf KG (Germany)                    | Microsoft Corporation                                        |                                                  |
+| PrimaryCompetitor                                            |                                                              |                                                              |                                                  |
+| CompeteThreatLevel                                           | UNKNOWN                                                      | UNKNOWN                                                      |                                                  |
+| LicensingProgram                                             | Cloud Solution Provider                                      | Online                                                       |                                                  |
+| LicensingSubType                                             | Cloud Solution Provider New                                  | Existing - New Contract                                      |                                                  |
+| WorkloadType                                                 | UNKNOWN                                                      | UNKNOWN                                                      |                                                  |
+| WorkloadCapability                                           | UNKNOWN                                                      | UNKNOWN                                                      |                                                  |
+| WorkloadDetail                                               | UNKNOWN                                                      | UNKNOWN                                                      |                                                  |
+| ClosePlan                                                    | UNKNOWN                                                      | UNKNOWN                                                      |                                                  |
+| GBBAttachFlag                                                | No                                                           | No                                                           |                                                  |
+| PrimarySolutionArea                                          | Modern Work                                                  | Modern Work                                                  |                                                  |
+| OtherCompetitor                                              |                                                              |                                                              |                                                  |
+| SalesPlayChecklist                                           | UNKNOWN                                                      | UNKNOWN                                                      |                                                  |
+| DetailPricingLevel                                           | Cloud Solution Provider New                                  | MOSP Baseline Renewal Recurring                              |                                                  |
+| SummaryPricingLevel                                          | Cloud Solution Provider                                      | Online Services Baseline                                     |                                                  |
+| ReportingPricingLevel                                        | Cloud Solution Provider                                      | Online Services                                              |                                                  |
+| ReportingSummaryPricingLevel                                 | Cloud Solution Provider                                      | Online Services                                              |                                                  |
+| BusinessType                                                 | New                                                          | New                                                          |                                                  |
+| QualifiedPipelineFlag                                        | No                                                           | No                                                           |                                                  |
+| PriceListType                                                | Product Family                                               | Product Family                                               |                                                  |
+| OpportunityModifiedDate                                      | 00:00.0                                                      | 00:00.0                                                      |                                                  |
+| ForecastCommentsModifiedBy                                   | alboscai                                                     |                                                              |                                                  |
+| ForecastCommentsModifiedDate                                 | 00:00.0                                                      | 00:00.0                                                      |                                                  |
+| CRMAccount1                                                  | IB Wallner                                                   | ç‘žå£«å†ä¿é™©è‚¡ä»½æœ‰é™å…¬å¸åŒ—äº¬åˆ†å…¬å¸                  |                                                  |
 
 
 
@@ -255,7 +257,11 @@ This is a chart for products which has a property of  **subscription**, which me
 
 
 
-## 03.01 HeadTrax
+## HUMAN RELATED
+
+
+
+#### H.01 HeadTrax
 
 ```
  cluster('1es.kusto.windows.net').database('HeadTrax').Person
@@ -263,7 +269,36 @@ This is a chart for products which has a property of  **subscription**, which me
     | project Alias=toupper(Alias), DisplayName
 ```
 
-## 03.02 vwOpportunityPipeline()
+
+
+#### H.02 vwAccountSellerAssignment()
+
+many to many 
+
+|                                                           | Sample 1                     | Sample 2                     | Note                                                         |
+| --------------------------------------------------------- | ---------------------------- | ---------------------------- | ------------------------------------------------------------ |
+| ETLDate                                                   | 00:00.0                      | 00:00.0                      |                                                              |
+| <span style="background-color: tomato;">TPID</span>       | 2537830                      | 3850555                      | **<Customers>** Top Parent ID:                               |
+| AccountName                                               | NV-SMB K12                   | MARYLAND HEALTH ENTERPRISES  |                                                              |
+| <span style="background-color: tomato;">EmailAlias</span> | NAOSTEND                     | DESLETTE                     | **Microsoft Officers, also OpportunityOwner in <<u>Opportunity</u>>** |
+| AssignmentStartDate                                       | 00:00.0                      | 00:00.0                      |                                                              |
+| AssignmentEndDate                                         | 59:59.0                      | 59:59.0                      |                                                              |
+| ReportingManagerAlias                                     | KAKOLDEN                     | KAKOLDEN                     |                                                              |
+| AssignmentStatus                                          | ACTIVE                       | ACTIVE                       |                                                              |
+| StandardTitle                                             | Digital Cloud Acquisition IC | Digital Cloud Acquisition IC |                                                              |
+| Qualifier1                                                | Demand Response              | Demand Response              |                                                              |
+| Qualifier2                                                | Cloud                        | Cloud                        |                                                              |
+| Role                                                      | Other                        | Other                        |                                                              |
+| MCSCoverageModel                                          | Unassigned                   | Unassigned                   |                                                              |
+| OrgDesc                                                   | Small, Medium & Corporate    | Small, Medium & Corporate    |                                                              |
+| VPN                                                       | CorpHQ-CHS-SMC-DCAI-23925    | CorpHQ-CHS-SMC-DCAI-24078    |                                                              |
+| VPNType                                                   | Blueprint                    | Blueprint                    |                                                              |
+
+## OPPORTUNITY RELATED
+
+
+
+#### O.02 vwOpportunityPipeline()
 
 1. **ID, Fiscal_Time, Product_category,[ Pipeline**: 预测收入/未来收入]
 2. Different categories of the product: The product information, if it sells more than 1 product, it will bring out more than 1 records.
@@ -294,9 +329,11 @@ vwOpportunityPipeline()
 
 
 
+## BILL RELATED
 
 
-## 03.04 vwBilledRevenue()
+
+#### B.04 vwBilledRevenue()
 
 指真实收入
 
@@ -331,7 +368,7 @@ TPID is not primary key, there's no primary key in billed revenue
 
 
 
-## 03.05 vwBilledBudget()
+#### B.05 vwBilledBudget()
 
 Target revenue: 某地区某月的希望销售额
 
@@ -445,19 +482,17 @@ Each filter prefixed by the pipe character `|` is an instance of an *operator*, 
 
 [join 运算符 - Azure 数据资源管理器 | Microsoft Docs](https://docs.microsoft.com/zh-cn/azure/data-explorer/kusto/query/joinoperator?pivots=azuredataexplorer)
 
-| 联接风格                                                     | 输出记录                                                     |
-| :----------------------------------------------------------- | :----------------------------------------------------------- |
-| `kind=leftanti`,                                             | 返回左侧中在**右侧没有匹配项**的所有记录,仅会返回左侧的列。  |
-| `kind=rightanti`, ``                                         | 返回右侧中在左侧没有匹配项的所有记录。仅会返回左侧的列。     |
-| `kind=leftantisemi`                                          | 左半联接返回左侧中在右侧具有匹配记录的所有记录。 仅会返回左侧的列。 |
-| `kind=rightantisemi`                                         |                                                              |
-| `kind` 未指定，`kind=innerunique`                            | **左侧中仅有一行与 `on` 键的每个值匹配**。 输出包含一行，用于此行与右侧行的每一个匹配项。*[默认联接在左侧对联接键执行重复数据删除后（删除重复数据时会保留第一个记录）执行内联]* |
-| `kind=leftsemi`                                              | 返回**左侧中在右侧具有匹配项**的所有记录。                   |
-| `kind=rightsemi`                                             | 返回右侧中在左侧具有匹配项的所有记录。                       |
-| `kind=inner`                                                 | 输出中包含一行，该行对应于<u>左右匹配行</u>的**每种组合。**  |
-| `kind=leftouter`（或 `kind=rightouter` 或 `kind=fullouter`） | 包含的**一行对应于左侧和右侧的每一行**，即使没有匹配项。 不匹配的输出单元格包含 null。*[表 X 和 Y 的leftouter Join的结果始终包含左表 (X) 的所有记录，即使联接条件在右表 (Y) 中未找到任何匹配记录]* |
-| `fullouter`                                                  | 对于表中缺少匹配行的每个列，结果集都会有 `null` 值           |
-| `kind = cross`                                               | Kusto 本身不提供交叉联接风格。 无法用 `kind=cross` 来标记运算符。 |
+| 联接风格                                                     | 输出记录                                                     | Result                                           |
+| :----------------------------------------------------------- | :----------------------------------------------------------- | ------------------------------------------------ |
+| `kind=leftanti`,                                             | 返回左侧中在**右侧没有匹配项**的所有记录,仅会返回左侧的列。  | **left**                                         |
+| `kind=rightanti`, ``                                         | 返回右侧中在左侧没有匹配项的所有记录。仅会返回左侧的列。     | right                                            |
+| `kind=leftsemi`                                              | 左半联接返回左侧中**在右侧具有匹配记录的所有记录**。 仅会返回左侧的列。 | **left**                                         |
+| `kind=rightsemi`                                             | 返回右侧中在左侧具有匹配项的所有记录。                       | right                                            |
+| `kind=innerunique`<br />或`kind` 未指定                      | **左侧中仅有一行与 `on` 键的每个值匹配**。 输出包含一行，用于此行与右侧行的每一个匹配项。*[默认联接在左侧对联接键执行重复数据删除后（删除重复数据时会保留第一个记录）执行内联]* | both<br />**[key\|value<br />\|key 1\|value 1]** |
+| `kind=inner`                                                 | 输出中包含一行，该行对应于<u>左右匹配行</u>的**每种组合。**  | both                                             |
+| `kind=leftouter`<br />（或 `kind=rightouter` <br />或 `kind=fullouter`） | 包含的**一行对应于左侧和右侧的每一行**，即使没有匹配项。 不匹配的输出单元格包含 null。<br />*[表 X 和 Y 的leftouter Join的结果始终包含左表 (X) 的所有记录，即使联接条件在右表 (Y) 中未找到任何匹配记录]* | both                                             |
+| `fullouter`                                                  | 对于表中缺少匹配行的每个列，结果集都会有 `null` 值           |                                                  |
+| `kind = cross`                                               | Kusto 本身不提供交叉联接风格。 无法用 `kind=cross` 来标记运算符。 | none                                             |
 
 <img src="https://miro.medium.com/max/1400/1*UAPgZRnhFG29C0nDFi5D0A.png" alt="What is the difference between an inner and an outer join in SQL? | by Kate  Marie Lewis | Towards Data Science" style="zoom:33%;" />
 
@@ -465,7 +500,14 @@ Each filter prefixed by the pipe character `|` is an instance of an *operator*, 
 
 [查询最佳做法 - Azure 数据资源管理器 | Microsoft Docs](https://docs.microsoft.com/zh-cn/azure/data-explorer/kusto/query/best-practices)
 
+## 77.03 My Special Usage 
 
+```R
+# ETL date == today
+| where ETLDate == startofday(now()) 
+
+
+```
 
 
 
@@ -533,7 +575,9 @@ Each filter prefixed by the pipe character `|` is an instance of an *operator*, 
 
 
 
-## Solution [I1]
+## Solution [A1E]
+
+Based on the feature, we decided to create 2 charts for each view and link them on <ID> in Power BI.
 
 #### T1-AVD Engagement
 
@@ -620,7 +664,7 @@ currentACR
 
 
 
-## Solution [I2]
+## Solution [A1O]
 
 
 
@@ -708,7 +752,7 @@ vwFactOpportunityPipeline()
 
 
 
-```
+```R
 Hi Wenbo,
 
 I have an item that I’d like you to work on. Here’s some context and requirements:
@@ -736,13 +780,64 @@ Feel free to let me know if you have any questions.
 Thanks,
 -Raien
 
+
+# Message 2
+
+how many of these are not matching the Account-Seller assignment.
+
+As you already know, Opportunities and Engagements have Owners (which usually are sellers), and sellers have TP assignments. Recently we discovered that there are cases where a seller owns an Opportunity/Engagement but he/she is not assigned to the TP that these Opportunities/Engagements associated with. So we’d like to identify such cases…
+              
+              As I mentioned in my original email, you’ll need to leverage vwAccountSellerAssignment() to achieve what I asked for.
+
+```
+
+## 
+
+| CRM  Opportunity ID | Status | Due Date                  | TPID | Business Type | Owner  Alias | Owner Standard Title | Owner  Qualifier 1 | Owner Qualifier 2 |
+| ------------------- | ------ | ------------------------- | ---- | ------------- | ------------ | -------------------- | ------------------ | ----------------- |
+| CRM Engagement ID   | Status | Estimated Completion Date | TPID |               | Owner Alias  | Owner Standard Title | Owner Qualifier 1  | Owner Qualifier 2 |
+
+
+
+## Solution [A2O]
+
+```R
+# original - with useless cases
+# CRM Opportunity ID| 	Status|	Due Date|	TPID|	Business Type	|Owner Alias|	Owner Standard Title	|Owner Qualifier 1	| Owner Qualifier 2
+vwOpportunity()
+| where OpportunityCloseDate >= datetime(2021-07-01) or OpportunityDueDate >= datetime(2021-07-01)
+| where TPID != 0
+| distinct CRMOpportunityID,OpportunityOwner,OpportunityOwnerStandardTitle,TPID,MSXStatus,OpportunityDueDate,BusinessType
+| join kind=inner (
+    vwAccountSellerAssignment()
+    | where TPID != 0
+    | project EmailAlias,ATPID = TPID
+)on $left.OpportunityOwner==$right.EmailAlias
+| join kind=inner(
+    Person()
+    | distinct Alias,Qualifier1,Qualifier2
+) on $left.OpportunityOwner == $right.Alias
+| extend idflag = iff(ATPID ==TPID,1,0)
+| summarize Totalflag =sum(idflag) by CRMOpportunityID,MSXStatus,OpportunityDueDate,TPID,BusinessType,OpportunityOwner,OpportunityOwnerStandardTitle,Qualifier1,Qualifier2
+| where Totalflag ==0
+| project CRMOpportunityID,MSXStatus,OpportunityDueDate,TPID,BusinessType,OpportunityOwner,OpportunityOwnerStandardTitle,Qualifier1,Qualifier2
+
 ```
 
 
 
-## 
-
-| CRM  Opportunity ID | Status | Due Date | TPID | Business Type | Owner  Alias | Owner Standard Title | Owner  Qualifier 1 | Owner Qualifier 2 |
-| ------------------- | ------ | -------- | ---- | ------------- | ------------ | -------------------- | ------------------ | ----------------- |
-|                     |        |          |      |               |              |                      |                    |                   |
+```R
+# Corrected by Raien
+.create-or-alter function with (folder = "Adhoc/v-wenbosun", skipvalidation = "true") GetUnassignedAccoutOpp() {
+    
+database("MWSData").vwOpportunity()
+| where TPID != 0
+| where OpportunityOwner != "UNKNOWN"
+| join kind=leftanti database("MWSData").vwAccountSellerAssignment() on $left.OpportunityOwner == $right.EmailAlias, TPID
+| join kind=inner database("MWSData").Person() on $left.OpportunityOwner == $right.Alias
+| project CRMOpportunityID, MSXStatus, OpportunityDueDate, TPID, BusinessType, OpportunityOwner, StandardTitle, Qualifier1, Qualifier2
+    
+    
+}
+```
 
