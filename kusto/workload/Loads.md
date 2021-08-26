@@ -146,7 +146,7 @@ print current_database()
 
 
 
-# 01 Opportunity
+# 01 *Opportunity
 
 vwopportuity: The properties of a opportunity ID.
 
@@ -170,7 +170,7 @@ vwFactOpportunityPipeline()
 | DaysInSalesStage                                             | 649                                                          | 882                                                          |                                                  |
 | SalesStage                                                   | Prove Value 60%                                              | Develop Strategy 20%                                         |                                                  |
 | ForecastRecommendation                                       | Committed At Risk                                            | Uncommitted                                                  |                                                  |
-| ForecastComments                                             | AB - 15/Oct - 15.Oct.2020     No answer     checked Tennant     no action |                                                              |                                                  |
+| ForecastComments                                             | AB - 15/Oct - 15.Oct.2020     No answer  <br />   checked Tennant     no action |                                                              |                                                  |
 | SummarySegment                                               | Small, Medium & Corporate Commercial                         | Small, Medium & Corporate  Commercial                        |                                                  |
 | Segment                                                      | Small, Medium & Corporate Commercial                         | Small, Medium & Corporate  Commercial                        |                                                  |
 | SubSegment                                                   | SM&C Commercial - SMB                                        | SM&C Commercial - SMB                                        |                                                  |
@@ -181,7 +181,7 @@ vwFactOpportunityPipeline()
 | FieldSegment                                                 | SM&C SMB                                                     | SM&C SMB                                                     |                                                  |
 | FieldSubSegment                                              | SM&C Commercial - SMB                                        | SM&C Commercial - SMB                                        |                                                  |
 | OpportunityDesc                                              | OfficeProPLus. Windows, Server                               | 365                                                          |                                                  |
-| CreatedBy                                                    | alboscai                                                     | a64d5bc2f0d241bcac649426f3ac6c3fv-wenmya                     |                                                  |
+| CreatedBy                                                    | alboscai                                                     | a64d5bc2f0d241bcac649426<br />f3ac6c3fv-wenmya               |                                                  |
 | CreatedByGroup                                               | SMC                                                          |                                                              |                                                  |
 | CreatedByStandardTitleGroup                                  |                                                              | Other                                                        |                                                  |
 | OpportunityOwner                                             | ALBOSCAI                                                     | ZHAYING                                                      | **缺失值： <br />OpportunityOwner == "UNKNOWN"** |
@@ -205,17 +205,17 @@ vwFactOpportunityPipeline()
 | SummaryPricingLevel                                          | Cloud Solution Provider                                      | Online Services Baseline                                     |                                                  |
 | ReportingPricingLevel                                        | Cloud Solution Provider                                      | Online Services                                              |                                                  |
 | ReportingSummaryPricingLevel                                 | Cloud Solution Provider                                      | Online Services                                              |                                                  |
-| BusinessType                                                 | New                                                          | New                                                          |                                                  |
+| <span style="background-color: tomato;">BusinessType</span>  | New                                                          | New                                                          | {New\|Unknown\|<br />Renewal\|Recurring}         |
 | QualifiedPipelineFlag                                        | No                                                           | No                                                           |                                                  |
 | PriceListType                                                | Product Family                                               | Product Family                                               |                                                  |
 | OpportunityModifiedDate                                      | 00:00.0                                                      | 00:00.0                                                      |                                                  |
 | ForecastCommentsModifiedBy                                   | alboscai                                                     |                                                              |                                                  |
 | ForecastCommentsModifiedDate                                 | 00:00.0                                                      | 00:00.0                                                      |                                                  |
-| CRMAccount1                                                  | IB Wallner                                                   | ç‘žå£«å†ä¿é™©è‚¡ä»½æœ‰é™å…¬å¸åŒ—äº¬åˆ†å…¬å¸                  |                                                  |
+| CRMAccount1                                                  | IB Wallner                                                   | ç‘žå£«å†ä¿é™©è‚¡ä»½æœ<br />‰é™å…¬å¸åŒ—äº¬åˆ†å…¬å¸            |                                                  |
 
 
 
-# 02 Engagements
+# 02 *Engagements
 
 This is a chart for products which has a property of  **subscription**, which means, if we have a stable relationship with a company (got subscription each month), we will call it a good engagement. 
 
@@ -271,28 +271,113 @@ This is a chart for products which has a property of  **subscription**, which me
 
 
 
+|                              | Sample 1                                                     | Sample 2                                                     | Note                                 |
+| ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------ |
+| AadTenantId                  | 72f988bf-86f1-41af-91ab-2d7cd011db47                         | 72f988bf-86f1-41af-91ab-2d7cd011db47                         |                                      |
+| AadObjectId                  | fb011a43-4c1e-4f37-91d5-97cc91c43646                         | fb00315e-3363-4d0f-97fd-c7f6df8fe972                         |                                      |
+| AadAccountEnabled            | 1                                                            | 1                                                            |                                      |
+| AadEtlIngestDateTime         | 04:01.0                                                      | 43:10.8                                                      |                                      |
+| Alias                        | v-aparveen                                                   | johennes                                                     |                                      |
+| BuildingAddressLine1         | South County Business Park                                   |                                                              |                                      |
+| BuildingAddressLine2         | Leopardstown                                                 |                                                              |                                      |
+| BuildingCampus               | Dublin                                                       |                                                              |                                      |
+| BuildingCity                 | Dublin                                                       |                                                              |                                      |
+| BuildingCountry              | IE                                                           |                                                              |                                      |
+| BuildingLatitude             | 53.26904                                                     |                                                              |                                      |
+| BuildingLongitude            | -6.19692                                                     |                                                              |                                      |
+| BuildingName                 | NO WORKSPACE                                                 | DUBLIN-PLACE                                                 |                                      |
+| BuildingPostalCode           | D18                                                          |                                                              |                                      |
+| BuildingRegion               | MSUS                                                         | EMEA                                                         |                                      |
+| BuildingSiteCode             | IEDUBTRI                                                     |                                                              |                                      |
+| BuildingSort                 | NO WORKSPACE                                                 | DUBLIN-PLACE                                                 |                                      |
+| BuildingStateProvince        | D                                                            |                                                              |                                      |
+| BuildingTimeZone             | (GMT) Greenwich Mean  Time;Dublin,Edinburgh,London,Lisbon    |                                                              |                                      |
+| BusinessPhone                | +353 (1) 7066287                                             |                                                              |                                      |
+| CareerStageName              | IC4                                                          |                                                              |                                      |
+| CityName                     | Dublin                                                       |                                                              |                                      |
+| CompanyCode                  | 1010                                                         | 1062                                                         |                                      |
+| CompanyStartDate             | 00:00.0                                                      |                                                              |                                      |
+| CostCenterCode               | 10175446                                                     | 10124653                                                     |                                      |
+| CSCategoryCode               | 34                                                           | 0                                                            |                                      |
+| CUId                         | f05631cf-3701-7de4-8fbc-a433f3e21bae                         | 61d5cb70-5879-7278-9595-21deeb5ec148                         |                                      |
+| Department                   | CI Venus AOC                                                 | GCS Corp IE                                                  |                                      |
+| DisplayName                  | Amreen Parveen (Cognizant Worldwide Limited)                 | Joe Hennessy                                                 |                                      |
+| EmailAddress                 | v-aparveen@microsoft.com                                     | Joe.Hennessy@microsoft.com                                   |                                      |
+| EmployeeLevel                | 9                                                            | 9                                                            |                                      |
+| FirstMsJvHireDate            | 00:00.0                                                      |                                                              |                                      |
+| FirstRegularHireDate         | 00:00.0                                                      |                                                              |                                      |
+| FullName                     | Parveen, Amreen                                              | Hennessy, Joseph James                                       |                                      |
+| FunctionHierarchyExecCode    | XI29                                                         | H98W                                                         |                                      |
+| GivenName                    | Amreen                                                       | Joseph                                                       |                                      |
+| JobTitle                     |                                                              | ACCOUNT MGR                                                  |                                      |
+| JobTitleName                 | Business Operations & Program Management                     | Advertising Client Success                                   |                                      |
+| JobTitleSummary              | Business Programs & Operations                               | Customer Success                                             |                                      |
+| LocationAreaCode             | IE                                                           |                                                              |                                      |
+| MostRecentHireDate           | 00:00.0                                                      |                                                              |                                      |
+| OfficeLocation               | No WorkSpace                                                 | DUBLIN-PLACE/Mobile                                          |                                      |
+| OnPremisesSecurityIdentifier | S-1-5-21-2146773085-903363285-719344707-2691929              | S-1-5-21-1721254763-462695806-1538882281-4129313             |                                      |
+| OrganizationAliasHierarchy   | /satyan/amyhood/mesmith/mamckinn/<br />delawton/sadesaus/v-ashukla/v-amaddala/v-aparveen | /satyan/rajeshj/mikhailp/rikvdk/lytad/<br />mrichard/helenat/chfields/johennes |                                      |
+| OrganizationHierarchy        | /30958/190659/298458/763013/722852/<br />1353318/1445512/1445173/1459811 | /30958/22206/373539/111263/354456/<br />312553/137397/1376701/1393583 |                                      |
+| PersonnelNumber              | 1459811                                                      | 1393583                                                      |                                      |
+| PositionNumber               | 92043587                                                     | 91338046                                                     |                                      |
+| PositionProjectCategory      |                                                              |                                                              |                                      |
+| PositionProjectCode          | 0                                                            | 0                                                            |                                      |
+| PositionProjectName          |                                                              |                                                              |                                      |
+| ServiceAwardDate             | 00:00.0                                                      |                                                              |                                      |
+| StaffingAgencyName           | Cognizant Worldwide Limited                                  |                                                              |                                      |
+| StaffingResourceCategory     | Vendor                                                       | Regular                                                      |                                      |
+| StaffingResourceGroup        | Outsourced Staff                                             | Regular/Expat/Comm Eligible                                  |                                      |
+| StandardTitle                | XR - Business Operations & Program Mgmt                      | Advertising Client Success IC4                               | **Position Level should be removed** |
+| Surname                      | Parveen                                                      | Hennessy                                                     |                                      |
+| TerminationDate              |                                                              |                                                              |                                      |
+| EtlFromDateTime              | 00:00.0                                                      | 00:00.0                                                      |                                      |
+| EtlLastUpdateDate            | 04:01.0                                                      | 43:10.8                                                      |                                      |
+| EtlCurrent                   | 1                                                            | 1                                                            |                                      |
+| EtlToDateTime                | ########                                                     | ########                                                     |                                      |
+| RemovedFromAad               | 0                                                            | 0                                                            |                                      |
+| CurrentlyEmployed            | 1                                                            | 1                                                            | **should be currently employed**     |
+
+
+
 #### H.02 vwAccountSellerAssignment()
 
 many to many 
 
-|                                                           | Sample 1                     | Sample 2                     | Note                                                         |
-| --------------------------------------------------------- | ---------------------------- | ---------------------------- | ------------------------------------------------------------ |
-| ETLDate                                                   | 00:00.0                      | 00:00.0                      |                                                              |
-| <span style="background-color: tomato;">TPID</span>       | 2537830                      | 3850555                      | **<Customers>** Top Parent ID:                               |
-| AccountName                                               | NV-SMB K12                   | MARYLAND HEALTH ENTERPRISES  |                                                              |
-| <span style="background-color: tomato;">EmailAlias</span> | NAOSTEND                     | DESLETTE                     | **Microsoft Officers, also OpportunityOwner in <<u>Opportunity</u>>** |
-| AssignmentStartDate                                       | 00:00.0                      | 00:00.0                      |                                                              |
-| AssignmentEndDate                                         | 59:59.0                      | 59:59.0                      |                                                              |
-| ReportingManagerAlias                                     | KAKOLDEN                     | KAKOLDEN                     |                                                              |
-| AssignmentStatus                                          | ACTIVE                       | ACTIVE                       |                                                              |
-| StandardTitle                                             | Digital Cloud Acquisition IC | Digital Cloud Acquisition IC |                                                              |
-| Qualifier1                                                | Demand Response              | Demand Response              |                                                              |
-| Qualifier2                                                | Cloud                        | Cloud                        |                                                              |
-| Role                                                      | Other                        | Other                        |                                                              |
-| MCSCoverageModel                                          | Unassigned                   | Unassigned                   |                                                              |
-| OrgDesc                                                   | Small, Medium & Corporate    | Small, Medium & Corporate    |                                                              |
-| VPN                                                       | CorpHQ-CHS-SMC-DCAI-23925    | CorpHQ-CHS-SMC-DCAI-24078    |                                                              |
-| VPNType                                                   | Blueprint                    | Blueprint                    |                                                              |
+|                                                            | Sample 1                     | Sample 2                     | Note                                                         |
+| ---------------------------------------------------------- | ---------------------------- | ---------------------------- | ------------------------------------------------------------ |
+| ETLDate                                                    | 00:00.0                      | 00:00.0                      |                                                              |
+| <span style="background-color: tomato;">TPID</span>        | 2537830                      | 3850555                      | **<Customers>** Top Parent ID:                               |
+| AccountName                                                | NV-SMB K12                   | MARYLAND HEALTH ENTERPRISES  |                                                              |
+| <span style="background-color: tomato;">EmailAlias</span>  | NAOSTEND                     | DESLETTE                     | **Microsoft Officers, also OpportunityOwner in <<u>Opportunity</u>>** |
+| AssignmentStartDate                                        | 00:00.0                      | 00:00.0                      |                                                              |
+| AssignmentEndDate                                          | 59:59.0                      | 59:59.0                      |                                                              |
+| ReportingManagerAlias                                      | KAKOLDEN                     | KAKOLDEN                     |                                                              |
+| AssignmentStatus                                           | ACTIVE                       | ACTIVE                       |                                                              |
+| StandardTitle                                              | Digital Cloud Acquisition IC | Digital Cloud Acquisition IC |                                                              |
+| <span style="background-color: #9FE2BF;">Qualifier1</span> | Demand Response              | Demand Response              | **同为Qualifier 字段，一般不用此表中的字段【更新过慢有信息差】<br />**优先选用Person() 中的Qualifier 字段 |
+| <span style="background-color: #9FE2BF;">Qualifier2</span> | Cloud                        | Cloud                        |                                                              |
+| Role                                                       | Other                        | Other                        |                                                              |
+| MCSCoverageModel                                           | Unassigned                   | Unassigned                   |                                                              |
+| OrgDesc                                                    | Small, Medium & Corporate    | Small, Medium & Corporate    |                                                              |
+| VPN                                                        | CorpHQ-CHS-SMC-DCAI-23925    | CorpHQ-CHS-SMC-DCAI-24078    |                                                              |
+| VPNType                                                    | Blueprint                    | Blueprint                    |                                                              |
+
+#### H.03 Person()
+
+|                                                            | Sample 1                       | Sample 2                                 | Note                                                   |
+| ---------------------------------------------------------- | ------------------------------ | ---------------------------------------- | ------------------------------------------------------ |
+| Alias                                                      | MARCELWE                       | V-ERBRI                                  |                                                        |
+| FullName                                                   | Weissinger, Marcel             | Brimmer, Erin M                          |                                                        |
+| Org                                                        | Microsoft Consulting           | M&O                                      |                                                        |
+| OrgExecSummary                                             | Global Sales and Marketing Ops | Global Sales and Marketing Ops           |                                                        |
+| <span style="background-color: #9FE2BF;">Qualifier1</span> | N/A                            | N/A                                      | **同字段出现时， 优先选用Person() 中的Qualifier 字段** |
+| <span style="background-color: #9FE2BF;">Qualifier2</span> | N/A                            | N/A                                      |                                                        |
+| StandardTitle                                              | Account Delivery Executive     | XR - Business Operations &  Program Mgmt |                                                        |
+| ManagerEmail                                               | THOMASTH                       | KEPRANGH                                 |                                                        |
+| Area                                                       | Germany                        | United States                            |                                                        |
+| Region                                                     | Germany                        | United States                            |                                                        |
+| XTUGroup                                                   | CCE                            |                                          |                                                        |
+| ETLDate                                                    | 00:00.0                        | 00:00.0                                  |                                                        |
 
 ## OPPORTUNITY RELATED
 
@@ -793,8 +878,9 @@ As you already know, Opportunities and Engagements have Owners (which usually ar
 
 ## 
 
-| CRM  Opportunity ID | Status | Due Date                  | TPID | Business Type | Owner  Alias | Owner Standard Title | Owner  Qualifier 1 | Owner Qualifier 2 |
+|                     |        |                           |      |               |              |                      |                    |                   |
 | ------------------- | ------ | ------------------------- | ---- | ------------- | ------------ | -------------------- | ------------------ | ----------------- |
+| CRM  Opportunity ID | Status | Due Date                  | TPID | Business Type | Owner  Alias | Owner Standard Title | Owner  Qualifier 1 | Owner Qualifier 2 |
 | CRM Engagement ID   | Status | Estimated Completion Date | TPID |               | Owner Alias  | Owner Standard Title | Owner Qualifier 1  | Owner Qualifier 2 |
 
 
