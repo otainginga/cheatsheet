@@ -40,7 +40,7 @@ several studies
 
 Under this section we will discuss following data mining  classification models to predict cardiovascular disease:
 
-## 1.Method Block
+## 1.[ Method Block ]
 
  RIPPER
 
@@ -67,11 +67,17 @@ To compare these data mining classification techniques Cleveland  cardiovascular
 
 
 
+## 1.conclusion
+
+1. **There are different data mining techniques** that can be used  for the identification and prevention of...
+2. In this paper four classification techniques are  compared
+3. These techniques are  compared on
+4.  **Our studies  showed** that SVM turned out to be  best classifier
+5. **In future**  we intend to improve performance of these basic classification  techniques by creating meta model 
 
 
 
-
-
+2.
 
 
 
@@ -115,7 +121,12 @@ To compare these data mining classification techniques Cleveland  cardiovascular
 
 ## ordered
 
-1. Kumari, M., & Godara, S. (2011). Comparative Study of Data Mining Classification Methods in Cardiovascular Disease Prediction.
+| Index | Citation                                                     |
+| ----- | ------------------------------------------------------------ |
+| 1     | Kumari, M., & Godara, S. (2011).  Comparative Study of Data Mining Classification Methods in Cardiovascular  Disease Prediction. |
+| 2     | Sonam Nikhar, A.M. Karandikar, “Prediction of Heart Disease Using Machine Learning Algorithms”, International Journal of Advanced Engineering,  Management and Science (IJAEMS), Vol-2, Issue-6, June- 2016, ISSN: 2454-1311, pp 617-621. |
+
+
 
 
 
