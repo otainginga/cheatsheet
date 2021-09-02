@@ -1,0 +1,223 @@
+# #M
+
+<span  style="background-color:tomato">Draft</span>
+
+| version | note           |
+| ------- | -------------- |
+| P       | only structure |
+|         |                |
+| Ed      | Finished work  |
+
+# #Progress--------------------
+
+
+
+| Header 1       | Header 2          | Header 3                               | Header 4 | flag    | note |
+| -------------- | ----------------- | -------------------------------------- | -------- | ------- | ---- |
+| Title          |                   |                                        |          | :flags: |      |
+| abstruct       | abstruct          | background<br />result<br />conclusion |          | :flags: |      |
+|                | keywords          |                                        |          | :flags: |      |
+| Introduction   |                   |                                        |          | :flags: |      |
+| Related works  |                   |                                        |          |         |      |
+| Methods        | data source       |                                        |          | :flags: |      |
+| Methods        | platform          |                                        |          | :flags: |      |
+| Methods        | algorithms        | DT                                     |          |         |      |
+| Methods        | algorithms        | SVM                                    |          |         |      |
+| proposed model | data cleansing    |                                        |          | :flags: |      |
+| proposed model | eda               |                                        |          |         |      |
+| proposed model | feature selection |                                        |          |         |      |
+| proposed model | cross-val         |                                        |          | :flags: |      |
+| results        |                   |                                        |          |         |      |
+| conclusion     |                   |                                        |          |         |      |
+|                |                   |                                        |          |         |      |
+|                |                   |                                        |          |         |      |
+| code           |                   |                                        |          |         |      |
+
+
+
+
+
+# #ED------------------
+
+## ED.title
+
+## ED.Abstruct
+
+**Background:** Cardiovascular disease is one of the most threatening diseases to human health today. Exploring the performance of different models in predicting cardiovascular diseases will help medical practitioners to make more accurate medical diagnoses using non-invasive means to save lives. In this paper, a comparative analysis of different classification prediction models was applied on the prediction of heart disease cases using  heart disease data from UCI machine learning Repository. This data source contains 14 dimensions of data for 303 patients. The classifiers applied in this study were decision trees, random forests, support vector machines (SVM) and logistic regression. To examine the performance of each classifier, criteria such as accuracy, sensitivity, and specificity were used, and a 10-fold cross-validation method was used to measure the unbiased estimates of these prediction models. 
+
+**Results:**
+
+**Conclusion**: According to our results, SVM is able to make predictive judgments for suspected cardiovascular disease cases to the maximum extent possible.
+
+### ED.keywords
+
+Keywords: heart disease, prediction, classification,decision tree, random forest, support vector machine,machine learning.
+
+## ED. Introduction
+
+Heart disease is the leading cause of death before cancer and traffic accidents [ED.I.04]. Data from the CDC [ED.I.05] reveal that heart disease causes about 655,000 deaths each year, which accounts for 25% of all deaths in the United States. According to the National Cancer Institute's definition of heart disease, heart disease refers to a category of diseases that affect the heart or blood vessels. In fact, the risk of cardiovascular disease is associated with other factors as well; smoking, high blood pressure, high cholesterol, unhealthy diet, lack of exercise and obesity all contribute to the potential risk of heart disease. However, identifying heart disease can be difficult due to the uncertainty of clinical practice. Due to this limitation, scientists have turned to modern methods, such as data mining and machine learning, to predict disease. In this regard, it is particularly important to compare the performance of various techniques and algorithms and determine the best approach.
+
+ This study builds classification models to make predictions on typical data from heart disease patients and compares the performance of different algorithms to gain insight into the ability of different models to reveal hidden patterns in medical data. Understanding the ability of models can empower non-invasive means in cardiovascular disease diagnosis and assist medical professionals to make more accurate judgments. This can not only help save lives through early diagnosis of heart problems, but also save money by avoiding costly invasive treatments. Existing classifier algorithms, such as decision trees[ED.I.03],  logistic regression, random forests, and support vector machine[ED.I.02], and hybrid data mining [ED.I.01], have been used to explore different types of cardiac problems. Medical data mining has great potential in exploring hidden patterns in datasets in the clinical domain.
+
+
+
+## ED.Related Works
+
+
+
+## ED. Data& Methods
+
+### ED.M.Data Source
+
+The dataset used in study  is obtained from **UCI machine learning Repository**[ED.M.D.01],  contains 303 instances and 14 attributes, which is also the most commonly used by researchers.  The output field, which is defined as angiographic disease status, has a value range of 1 to 4. To simplify the prediction, the new target will appear as a binary value, value 0 for cases without risk of heart disease, and other value (value 1,2,3,4) means the presence of cardiovascular disease.
+
+### ED.M.platform
+
+With respect to [ED.M.1], python provides  a good platform for data analysis and machine learning due to its object-oriented, open source nature, and scikit-learn package enables a comprehensive list of machine learning methods and is a handy toolkit for statisticians. Scholars have found the python environment to be concise and accurate, and have used it to predict heart disease in medical data[ED.M.2].  
+
+In this paper,  several packages,especially scikit-learn, is used in python environment to applying a variety of statistical models for data analysis, data visualization,feature selection and training and testing using machine learning methods. 
+
+### ED.M.Algorithms
+
+#### ED.M.A.DT
+
+#### ED.M.A.SVM
+
+#### ED.M.A.RF
+
+## ED.Proposed model
+
+The following section describes how different algorithms are used to compare these classifiers performance. Figure ed.p.1 shows the main workflow of the whole process.
+
+![workflow.ed.p.02.png](https://github.com/otainginga/Image/blob/main/p2/workflow.ed.p.03.png?raw=true)
+
+### ED.P. Data cleansing
+
+This process involves dealing with missing values, removing obvious logical errors in the data and combining variables to reduce unnecessary computational effort. The final data holds 14 independent attributes from 297 subjects, such as age, chest pain type, blood pressure, blood glucose level, ECG at rest, heart rate, and four types of chest pain. 
+
+### ED.P. Exploratory Data Analysis
+
+
+
+```
+//The EDA helps to reveal some hid- den feature in a data set. Table and plots are used to explain the hidden features in COVID-19 data of Italy for the first 60 days since the index cases was recorded on 31st January 2020//
+
+
+```
+
+Exploratory Data Analysis[ED.P.01.EDA] refers to the critical process of performing initial investigations on data so as to discover patterns,to spot anomalies,to test hypothesis and to check assumptions with the help of summary statistics and graphical representations.
+
+
+
+Also, the effect of age on heart disease was found to be nonlinear in the exploratory study of our data, and to avoid this nonlinear effect, the new age variable was transformed from a numerical variable to a categorical variable. To avoid the effect of different units and magnitudes on the prediction results, the numerical data will be normalized. Categorical variables will be treated as dummy variables to cope with the effects of different factors.
+
+### ED.P.Feature Engineering
+
+Feature selection is an integral part of data analysis and mining. By selecting features in the data that contribute more to the final result, overfitting can be reduced in a way that reduces data noise. With the removal of misleading and redundant data, the accuracy of the model is also improved. The simplified data can also speed up the training time of the algorithm.
+
+The scikit-learn library provides an implementation of most of the useful statistical measures. The most extensive Chi-squared method, the ANOVA method for numerical variables of categorical problems, and the Mutual Information method for categorical problems. For the input and output data types of this study, the results of the three feature selection algorithms were combined and judged in this study. The results are as follows, and in the subsequent modeling process, variables with small contributions from the output variables will be removed, which is fbs, cp_typical_angina, restecg_ST_T_wave_abnormality, restecg_left_ventricular_hypertrophy, age45_54,age65_ . In the final data, 20 patient-related features will be present.
+
+### ED.P.Cross Validation
+
+ To avoid data bias from a single partitioned dataset, cross-validation method, specifically k-fold  cross-validation (10-fold) is applied. The following picture shows its basic idea. By dividing the whole data into 10 copies and taking one copy at a time without duplication as the test set, while using the other 9 copies as the training set to train the model, ten biases will be  obtained. Their mean value will be the evaluation result, which will be the closest to the real performance of the model.
+
+![kfold.png](https://github.com/otainginga/Image/blob/main/p2/kfold.png?raw=true)
+
+ 
+
+## ED. Results
+
+
+
+
+
+# WI. Appendix----------
+
+
+
+## Reference
+
+| Location    | Reference                                                    |
+| ----------- | ------------------------------------------------------------ |
+| ED.M.D.01   | [UCI Machine Learning Repository: Heart Disease Data Set](https://archive.ics.uci.edu/ml/datasets/heart+Disease) |
+| ED.M.1      | 1. Hao J, Ho TK. Machine Learning Made Easy: A Review of Scikit-learn Package in Python Programming Language. Journal of Educational and Behavioral Statistics. 2019;44(3):348-361. doi:10.3102/1076998619832248<br/> |
+| ED.M.2      | A. Singh and R. Kumar, "Heart Disease Prediction Using Machine Learning Algorithms," *2020 International Conference on Electrical and Electronics Engineering (ICE3)*, 2020, pp. 452-457, doi: 10.1109/ICE348803.2020.9122958. |
+| ED.P.EDA.01 | https://towardsdatascience.com/exploratory-data-analysis-8fc1cb20fd15 |
+|             |                                                              |
+|             |                                                              |
+|             |                                                              |
+| ED.I.01     | M. Saini, N. Baliyan and V. Bassi, "Prediction of heart disease severity with hybrid data mining," *2017 2nd International Conference on Telecommunication and Networks (TEL-NET)*, 2017, pp. 1-6, doi: 10.1109/TEL-NET.2017.8343565. |
+| ED.I.02     | J. S. Sonawane and D. R. Patil, "Prediction of heart disease using multilayer perceptron neural network," International Conference on Information Communication and Embedded Systems (ICICES2014), 2014, pp. 1-6, doi: 10.1109/ICICES.2014.7033860. |
+| ED.I.03     | Randa El-Bialy, Mostafa A. Salamay, Omar H. Karam, M. Essam Khalifa,Feature Analysis of Coronary Artery Heart Disease Data Sets,Procedia Computer Science,Volume 65, 2015, Pages 459-468, ISSN 1877-0509, https://doi.org/10.1016/j.procs.2015.09.132. |
+| ED.I.04     | M. Kirmani, "Cardiovascular disease prediction using data mining  techniques," Oriental Journal of Computer Science and Technology, vol. 10, pp. 520-528, 2017. |
+| ED.I.05     | Heart Disease \| cdc.gov. [online]https://www.cdc.gov/heartdisease/index.htm |
+|             |                                                              |
+|             |                                                              |
+
+
+
+
+
+## Table: Attributes of UCI heart disease dataset
+
+| Attribute | data type       | Range   | Description                                                  |
+| --------- | --------------- | ------- | ------------------------------------------------------------ |
+| age       | quantitative    | 29-77   | Patient's age in years                                       |
+| sex       | **qualitative** | 0,1     | 1 = male, 0 = female                                         |
+| cp        | **qualitative** | 1,2,3,4 | Chest Pain<br/>(Value 1: typical angina,Value 2: atypical angina, Value 3: non-anginal pain, Value 4: asymptomatic) |
+| trestbps  | quantitative    | 94-200  | The  person’s resting blood pressure<br /> (in mm Hg on admission to the  hospital) |
+| chol      | quantitative    | 126-564 | cholesterol  measurement in mg/dl                            |
+| fbs       | quantitative    | 0,1     | The person’s fasting blood sugar <br />(> 120 mg/dl, 1 = true; 0 = false) |
+| thal      | **qualitative** | 3,6,7   | A blood  disorder called thalassemia <br />(3 =  normal; 6 = fixed defect; 7 = reversable defect) |
+| restecg   | **qualitative** | 0,1,2   | resting  electrocardiographic results <br />(Value 0: normal, Value 1: having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of > 0.05 mV), Value 2: showing probable or definite left ventricular hypertrophy by Estes' criteria) |
+| Thalach   | quantitative    | 71-202  | maximum heart rate                                           |
+| exang     | **qualitative** | 0,1     | Exercise  induced angina <br />(1 = yes; 0 = no)             |
+| Oldpeak   | quantitative    | 0-6.2   | ST depression induced by exercise relative to rest.          |
+| slope     | **qualitative** | 0,1     | the  slope of the peak exercise ST segment <br />(0: downsloping, 1: flat, 2: upsloping) |
+| ca        | quantitative    | 0,1,2,3 | number  of major vessels (0-3) colored by flourosopy         |
+
+
+
+## Table: Results of different Features Selection Methods*
+
+| Specs                                | ANOVA  Score | Chi-squared Score | Mutual information Score |
+| ------------------------------------ | ------------ | ----------------- | ------------------------ |
+| thal_normal                          | 112.231      | 36.6542           | 0.11855                  |
+| cp_asymptomatic                      | 102.084      | 39.8481           | 0.15526                  |
+| thal_reversable_defect               | 90.5666      | 42.7504           | 0.09194                  |
+| ca                                   | 80.5779      | 82.7306           | 0.1217                   |
+| oldpeak                              | 64.6772      | 68.5705           | 0.11698                  |
+| thalach                              | 64.5899      | 187.053           | 0.08481                  |
+| exang                                | 63.6803      | 35.5081           | 0.08506                  |
+| slope_downsloping                    | 49.9749      | 22.8887           | 0.11177                  |
+| slope_flat                           | 41.0845      | 19.5591           | 0.08621                  |
+| cp_nontypical_angina                 | 30.3326      | 19.9524           | 0.07653                  |
+| age55_64                             | 25.8634      | 14.4284           | 0                        |
+| sex                                  | 24.7983      | 7.4442            | 0.00065                  |
+| cp_atypical_angina                   | 19.2556      | 15.1959           | 0.05767                  |
+| age35_44                             | 10.0679      | 8.15157           | 0.03763                  |
+| restecg_normal                       | 9.10447      | 4.49079           | 0.04715                  |
+| restecg_left_ventricular_hypertrophy | 7.49818      | 3.74291           | 0                        |
+| trestbps                             | 7.11765      | 16.7075           | 0                        |
+| age45_54                             | 7.0293       | 4.934             | 0                        |
+| thal_fixed_defect                    | 3.26657      | 3.05557           | 0.00369                  |
+| age25_34                             | 2.60021      | 2.56875           | 0.02239                  |
+| cp_typical_angina                    | 2.47469      | 2.2794            | 0                        |
+| chol                                 | 1.9138       | 20.8551           | 0.1071                   |
+| slope_upsloping                      | 1.09998      | 1.02531           | 0.0372                   |
+| age65_                               | 0.13383      | 0.11609           | 0                        |
+| fbs                                  | 0.00296      | 0.00255           | 0                        |
+| restecg_ST_T_wave_abnormality        | NaN          | NaN               | 0.02582                  |
+
+## Table: *Comparison of different Models* 
+
+|                      | Accuracy | Sensitivity | Specificity |
+| -------------------- | -------- | ----------- | ----------- |
+| Random Forest        | 0.8187   | 0.8671      | 0.7725      |
+| SVM Linear           | 0.8354   | 0.8954      | 0.7781      |
+| SVM RBF              | 0.8353   | 0.8785      | 0.7984      |
+| Logistic  Regression | 0.8286   | 0.8895      | 0.7667      |
+| decision tree        | 0.7373   | 0.7761      | 0.708       |
+
+## FIG. workflow
+
