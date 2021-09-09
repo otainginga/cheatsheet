@@ -416,6 +416,82 @@ vwOpportunityPipeline()
 | RevSumDivision      | string     | O365 Standalone Office Commercial |                |
 | SuperRevSumDivision | string     | O365 Core - Non M365              |                |
 
+全表
+
+| issue                         |                                                              |                                                              | note           |
+| ----------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------- |
+| ETLDate                       | 00:00.0                                                      | 00:00.0                                                      |                |
+| SuperRevSumDivision           | Enterprise Mobility Core - M365                              | Office                                                       |                |
+| RevSumDivision                | EMS Core - M365 Frontline                                    | Skype for Business                                           |                |
+| RevSumCategory                | EMS - M365 F3                                                | SfB Standard CAL                                             |                |
+| ProductFamily                 | CnE M365 F3                                                  | Office Live Comm Svr - CAL                                   |                |
+| AreaShortName                 | LATAM                                                        | Germany                                                      |                |
+| Subsidiary                    | Mexico                                                       | Germany                                                      |                |
+| TopParent                     | ADMINISTRACION Y OPERACION PROFESIONAL S.A. de C.V. FLEXI    | Komm.ONE                                                     |                |
+| TPID                          | 2137888                                                      | 1075493                                                      |                |
+| CRMOpportunityID              | 7-SJ7UH3KV6                                                  | 7-SMLD2E72R                                                  |                |
+| OpportunityName               | FY20 Q1 Ren-July 1th - EA Subscription - AdministraciÃ³n y OperaciÃ³n  Profesional S.A de C.V - 53452411 | FY20 TUP Yr 3 \| 4849565 \| exp:  11/30/2019 \| Partner: COMPAREX Deutschland AG |                |
+| MSXStatus                     | Won                                                          | Lost                                                         |                |
+| CRMHyperlink                  | https://microsoftsales.crm.dynamics.com/main.aspx?appid=fe0c3504-3700-e911-a849-000d3a10b7cc&pagetype=entityrecord&etn=opportunity&id=2a0270ec-bbd1-450d-8952-fe5c2728cb15 | https://microsoftsales.crm.dynamics.com/main.aspx?appid=fe0c3504-3700-e911-a849-000d3a10b7cc&pagetype=entityrecord&etn=opportunity&id=44a0f1bf-ef36-e911-a851-000d3a10b7cc |                |
+| PrimaryPartnerName            | SoftwareONE AG (Romania)                                     | Comparex (Germany)                                           |                |
+| SalesProgram                  |                                                              |                                                              |                |
+| OpportunityTeam               | [           {            "Alias":  "GIMENDEZ",            "StandardTitle":  "UNKNOWN"           }          ] | [           {            "Alias":  "LBRAUN",            "StandardTitle":  "UNKNOWN"           }          ] |                |
+| SalesUnit                     | Mexico.Corp                                                  | DE-Enterprise Public Sector                                  |                |
+| SalesStage                    | Negotiate Terms 80%                                          | Prove Value 60%                                              |                |
+| ForecastRecommendation        | Committed                                                    | Committed At Risk                                            |                |
+| FiscalYear                    | FY20                                                         | FY20                                                         |                |
+| FiscalQuarter                 | FY20-Q1                                                      | FY20-Q2                                                      |                |
+| FiscalMonth                   | 00:00.0                                                      | 00:00.0                                                      | 与Dueddate配套 |
+| QualifiedPipeline             | 0                                                            | 0                                                            |                |
+| ProductQuantity               | 0                                                            | 0                                                            |                |
+| OpportunityCreatedDate        | 00:00.0                                                      | 00:00.0                                                      |                |
+| OpportunityDueDate            | 00:00.0                                                      | 00:00.0                                                      |                |
+| OpportunityCloseDate          | 00:00.0                                                      | 00:00.0                                                      |                |
+| DaysInSalesStage              | 784                                                          | 650                                                          |                |
+| ForecastComments              | Agosto 2 - El cliente ya firmo su  contrato digi--           |                                                              |                |
+| SummarySegment                | Small, Medium & Corporate Commercial                         | Enterprise Public Sector                                     |                |
+| Segment                       | Small, Medium & Corporate Commercial                         | Major Public Sector                                          |                |
+| SubSegment                    | SM&C Commercial - Corporate                                  | Major - Government Other                                     |                |
+| FieldPrimarySegment           | Commercial                                                   | Commercial                                                   |                |
+| FieldSuperSummarySegment      | SM&C                                                         | Enterprise                                                   |                |
+| FieldSegment                  | SM&C Corporate                                               | Major Public Sector                                          |                |
+| FieldSubSegment               | SM&C Commercial - Corporate                                  | Major - Government Other                                     |                |
+| OpportunityDesc               | Please contact your Sales Excellence  Representative for any questions. And following is primary Licensing Partner:  PerifÃ©ricos ElectrÃ³nicos S.A. de C.V. |                                                              |                |
+| CreatedBy                     | msxinteg                                                     | d2fd0be99c93415ba1d69425edce3d16v-akhraj                     |                |
+| CreatedByGroup                |                                                              |                                                              |                |
+| CreatedByStandardTitleGroup   | Other                                                        | Other                                                        |                |
+| OpportunityOwner              | UNKNOWN                                                      | UNKNOWN                                                      |                |
+| OpportunityOwnerStandardTitle | UNKNOWN                                                      | UNKNOWN                                                      |                |
+| OwnershipGroup                | UNKNOWN                                                      | UNKNOWN                                                      |                |
+| PendingCloseStatus            | Final Pricing Sent                                           |                                                              |                |
+| PrimaryCompetitor             | Amazon Web Services                                          | None                                                         |                |
+| CompeteThreatLevel            | Low/ None                                                    | Low/ None                                                    |                |
+| LicensingProgram              | EA Subscription                                              | EA                                                           |                |
+| LicensingSubType              | EA Subscription Renewal                                      | True Up                                                      |                |
+| WorkloadType                  | UNKNOWN                                                      | UNKNOWN                                                      |                |
+| WorkloadCapability            | UNKNOWN                                                      | UNKNOWN                                                      |                |
+| WorkloadDetail                | UNKNOWN                                                      | UNKNOWN                                                      |                |
+| ClosePlan                     | UNKNOWN                                                      | UNKNOWN                                                      |                |
+| Pipeline                      | 19026                                                        | 36.8303                                                      | 预测收入       |
+| GBBAttachFlag                 | No                                                           | No                                                           |                |
+| PrimarySolutionArea           | Modern Work                                                  | Modern Work                                                  |                |
+| OtherCompetitor               |                                                              |                                                              |                |
+| SalesPlayChecklist            | UNKNOWN                                                      | UNKNOWN                                                      |                |
+| DetailPricingLevel            | EA Subscription Renewal NEW                                  | EA SA True Up NEW                                            |                |
+| SummaryPricingLevel           | EA Subscription Renew                                        | EA True Up                                                   |                |
+| ReportingPricingLevel         | EA Subscription Renewal                                      | EA Add-On                                                    |                |
+| ReportingSummaryPricingLevel  | EA Subscription Renewal                                      | EA Add-On                                                    |                |
+| BusinessType                  | Renewal                                                      | New                                                          |                |
+| QualifiedPipelineFlag         | No                                                           | No                                                           |                |
+| PriceListType                 | Product Family                                               | Product Family                                               |                |
+| OpportunityModifiedDate       | 00:00.0                                                      | 00:00.0                                                      |                |
+| ForecastCommentsModifiedBy    |                                                              |                                                              |                |
+| ForecastCommentsModifiedDate  | 00:00.0                                                      | 00:00.0                                                      |                |
+| SecurityQualifiedPipeline     | 0                                                            |                                                              |                |
+| CRMAccount                    | ADMINISTRACION Y OPERACION PROFESIONAL S.A. de C.V. FLEXI    | Komm.ONE                                                     |                |
+
+
+
 
 
 ## BILL RELATED
@@ -942,5 +1018,28 @@ database("MWSData").vwEngagement()
 | join kind=inner database("MWSData").Person() on $left.EngagementOwner == $right.Alias
 | project CRMEngagementID, EngagementStatus, EngagementEstimatedCompletionDate, TPID, EngagementOwner, StandardTitle, Qualifier1, Qualifier2
 }
+```
+
+
+
+
+
+# Assignment 3
+
+```R
+Both in the Artificial Rev$ AVD and Artificial Win 365 ACR table include a column for Engagement/Opportunity owner.
+
+ 
+
+Artificial Rev$ AVD table
+
+Include a column with Engagement Workload.
+Review NET ACR column calculation: End of Quarter Month ACR minus End of Previous Quarter Month ACR
+End of Quarter Month ACR Cap: delete or repurpose to NET ACR Cap
+NET ACR Cap Column:
+If last month of previous quarter ACR >$20K, then NET ACR Cap = 0 (Customer already invested in AVD)
+If Net ACR > $20K, then NET ACR Cap = $20K
+If Net ACR <$1K, then NET ACR Cap = 0
+Artificial Rev$ AVD column: =[Net ACR Cap]*[Conversion Ratio]*12, if < 0, then = 0
 ```
 

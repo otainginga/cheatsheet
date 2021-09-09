@@ -1279,6 +1279,10 @@ Cα(Tt)=Cα(T)Cα(Tt)=Cα(T)
 
 [笔试面试-红色石头的个人博客 (redstonewill.com)](https://redstonewill.com/category/written-interview/)
 
+[ANOVA in feature selection](https://towardsdatascience.com/anova-for-feature-selection-in-machine-learning-d9305e228476)
+
+
+
 ## 99.02 Layout
 
 [文本居中]([LaTeX（1）设置部分文本居中左对齐、居中右对齐_一个瑞特的博客-CSDN博客_latex 右对齐](https://blog.csdn.net/qq_40675882/article/details/84556527))
@@ -1296,3 +1300,4 @@ Cα(Tt)=Cα(T)Cα(Tt)=Cα(T)
 ### Linear regression<10>
 
 ### Logistic Regression<7>
+
