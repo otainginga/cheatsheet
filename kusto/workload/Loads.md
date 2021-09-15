@@ -1,4 +1,4 @@
-<span style="background-color: tomato;">HINT: THEME: Drake Juejin</span>
+<span style="background-color: tomato;"HINT: THEME: Drake Juejin</span>
 
 # 00 Basic Info 
 
@@ -565,6 +565,21 @@ billed budget is kinda like target that sales teams set, like goals. It just has
 | RunRateProjections       |                                          |          |
 | SecurityBilledBudget     |                                          |          |
 
+## Time Related
+
+### T.01 Calendar()
+
+| FiscalYear | FiscalQuarter | FiscalMonth | FiscalWeek         | FiscalDate | ETLDate |
+| ---------- | ------------- | ----------- | ------------------ | ---------- | ------- |
+| FY18       | FY18-Q2       | 2017-10-01  | 2017-10-06（FRI.） | 2017-10-01 | 00:00.0 |
+| FY18       | FY18-Q2       | 2017-10-01  | 2017-10-06         | 2017-10-02 | 00:00.0 |
+| FY18       | FY18-Q2       | 2017-10-01  | 2017-10-06         | 2017-10-03 | 00:00.0 |
+| FY18       | FY18-Q2       | 2017-10-01  | 2017-10-06         | 2017-10-04 | 00:00.0 |
+| FY18       | FY18-Q2       | 2017-10-01  | 2017-10-06         | 2017-10-05 | 00:00.0 |
+| FY18       | FY18-Q2       | 2017-10-01  | 2017-10-06         | 2017-10-06 | 00:00.0 |
+| FY18       | FY18-Q2       | 2017-10-01  | 2017-10-13         | 2017-10-07 | 00:00.0 |
+| FY18       | FY18-Q2       | 2017-10-01  | 2017-10-13         | 2017-10-08 | 00:00.0 |
+
 
 
 # 04 Other charts
@@ -675,6 +690,19 @@ Each filter prefixed by the pipe character `|` is an instance of an *operator*, 
 ```
 
 
+
+## 77.04 iff()
+
+```
+iff(`*predicate*`,` *ifTrue*`,` *ifFalse*`)
+```
+
+## 77.05 strcat_array
+
+```
+print str = strcat_array(dynamic([1, 2, 3]), "->")
+>> 1->2->3
+```
 
 
 
@@ -1034,12 +1062,320 @@ Both in the Artificial Rev$ AVD and Artificial Win 365 ACR table include a colum
 Artificial Rev$ AVD table
 
 Include a column with Engagement Workload.
-Review NET ACR column calculation: End of Quarter Month ACR minus End of Previous Quarter Month ACR
+Review 
+NET ACR column calculation: End of Quarter Month ACR minus End of Previous Quarter Month ACR
+
 End of Quarter Month ACR Cap: delete or repurpose to NET ACR Cap
+
 NET ACR Cap Column:
-If last month of previous quarter ACR >$20K, then NET ACR Cap = 0 (Customer already invested in AVD)
-If Net ACR > $20K, then NET ACR Cap = $20K
-If Net ACR <$1K, then NET ACR Cap = 0
-Artificial Rev$ AVD column: =[Net ACR Cap]*[Conversion Ratio]*12, if < 0, then = 0
+    If last month of previous quarter ACR >$20K, then NET ACR Cap = 0 (Customer already invested in AVD)
+    If Net ACR > $20K, then NET ACR Cap = $20K
+    If Net ACR <$1K, then NET ACR Cap = 0
+    Artificial Rev$ AVD column: =[Net ACR Cap]*[Conversion Ratio]*12, if < 0, then = 0
 ```
+
+
+
+
+
+
+
+
+
+Hi! 
+
+I have published the pbix to MW&S reporting Devenv, This is the progress and some questions:
+
+Progress
+
+1. add owners in Engagement/Opportunity
+2. add  Engagement Workload.
+3. update NET ACR
+
+
+
+
+
+Engagement 
+
+1. Is that necessary to make sure the data should all in the category of "Infra: AVD" when joining tables?
+2. I kept the time on FY21-Q4, since the ACR are all zeros now. Do I need to update the table to FY21Q1?
+3. One thing I can not fix is, there are still some blanks in Engagementworkload.
+4. What's the meaning for the limitation EngagementEstimatedCompletionDate >= datetime(2021-04-01) 
+
+
+
+Opportunity: 
+
+There are still a lot of blanks inn opportunityowner and I do not know why.
+
+
+
+## AVD Engagement
+
+```python
+
+vwEngagementMilestone(azureSecOnly=false)
+| join kind=inner vwEngagement() on CRMEngagementID
+| where EngagementMilestoneWorkload in ("Infra: Native Azure Virtual Desktop", "Infra: Citrix + Azure Virtual Desktop", "Infra: Horizon + Azure Virtual Desktop (VMware)")
+| where isnotempty(CRMEngagementID)
+| where EngagementEstimatedCompletionDate >= datetime(2021-04-01) 
+// temporarily using last FY Q4 since current FY Q1 hasn't ended yet
+| distinct CRMEngagementID, TPID, TopParent, EngagementStatus, EngagementEstimatedCompletionDate, EngagementOwner, EngagementMilestoneWorkload
+| summarize EngagementWorkload=strcat_array(make_list(EngagementMilestoneWorkload), ", ") by CRMEngagementID, TPID, TopParent, EngagementStatus, EngagementEstimatedCompletionDate, EngagementOwner
+| join kind=inner vwMAL() on TPID // exclude non-MAL accounts
+| join kind=inner Calendar() on $left.EngagementEstimatedCompletionDate == $right.FiscalDate
+| project CRMEngagementID, TPID, EngagementStatus, EngagementOwner=toupper(EngagementOwner), EngagementWorkload,
+    ClosedQuarter=iif(EngagementStatus == "Closed-Completed", FiscalQuarter, ""),
+    ClosedMonth=iif(EngagementStatus == "Closed-Completed", startofmonth(EngagementEstimatedCompletionDate), datetime(null))
+| join kind=inner vwEngagementTeam() on CRMEngagementID
+| join kind=inner Person() on $left.EngagementTeamAlias == $right.Alias
+| join kind=inner (
+    cluster('1es.kusto.windows.net').database('HeadTrax').Person
+    | where CurrentlyEmployed
+    | project Alias=toupper(Alias), DisplayName
+) on Alias
+| project CRMEngagementID, TPID, EngagementStatus, ClosedQuarter, ClosedMonth, EngagementOwner, EngagementWorkload,
+    Alias=EngagementTeamAlias, DisplayName, StandardTitle=trim_end("\\d", StandardTitle), Qualifier1, Qualifier2
+| extend
+    QualifiedRole=case(
+        StandardTitle in ("Solution Area Specialists IC", "Specialist") and Qualifier1 == "N/A" and Qualifier2 in ("Modern Work", "MW-Surface", "Security"), "Yes",
+        StandardTitle in ("Technology Specialists IC", "Technical Sepcialist") and Qualifier1 == "N/A" and Qualifier2 == "Cloud Endpoint", "Yes",
+        "No"
+    )
+```
+
+## TP ACR FY21Q4
+
+```python
+let endOfQuarterMonth = toscalar(datetime(2021-06-01));
+let endOfPrevQuarterMonth = datetime_add("month", -3, endOfQuarterMonth);
+let quarter = toscalar(Calendar() | where FiscalDate == endOfQuarterMonth | project FiscalQuarter);
+let tpids = materialize(vwEngagementMilestone(azureSecOnly=false)
+| join kind=inner vwEngagement(azureSecOnly=false) on CRMEngagementID
+| where EngagementMilestoneWorkload == "Infra: Native Azure Virtual Desktop"
+| where isnotempty(CRMEngagementID)
+| where EngagementEstimatedCompletionDate >= datetime(2021-04-01) // temporarily using last FY Q4 since current FY Q1 hasn't ended yet
+| distinct TPID
+| join kind=inner vwMAL() on TPID // exclude non-MAL accounts
+| project TPID); 
+let currentACR = tpids
+| join kind=inner vwACR() on TPID
+| where ServiceLevel1 == "Compute"
+| where ServiceInfluencer in ("NATIVE WVD", "CITRIX.CLOUD.WVD", "VMWARE.HORIZON CLOUD.AVD")
+| where FiscalMonth == endOfQuarterMonth
+| summarize ACR=sum(AzureConsumedRevenue) by TPID
+| project TPID, FiscalQuarter=quarter, EndOfQuarterMonth=endOfQuarterMonth, ACR;
+let prevACR = tpids
+| join kind=inner vwACR() on TPID
+| where ServiceLevel1 == "Compute"
+| where ServiceInfluencer in ("NATIVE WVD", "CITRIX.CLOUD.WVD", "VMWARE.HORIZON CLOUD.AVD")
+| where FiscalMonth == endOfPrevQuarterMonth
+| summarize ACR=sum(AzureConsumedRevenue) by TPID
+| project TPID, EndOfPreviousQuarterMonth=endOfPrevQuarterMonth, PreviousACR=ACR;
+currentACR
+| join kind=leftouter prevACR on TPID
+| join kind=inner vwMAL() on TPID
+| project TPID, TopParent, SummarySegment, FiscalQuarter, EndOfQuarterMonth, ACR,
+    EndOfPreviousQuarterMonth=endOfPrevQuarterMonth, PreviousACR=iif(isnull(PreviousACR), decimal(0), PreviousACR)
+| extend
+    NetACR=ACR - PreviousACR
+| extend
+    NetACRCap=case(
+        PreviousACR > 20000, 0,
+        NetACR > 20000, 20000,
+        NetACR < 1000, 0,
+        0
+    )
+| extend
+    ConvertionRatio=1.20
+| extend
+    ArtificialRev=NetACRCap * ConvertionRatio * 12
+```
+
+
+
+
+
+
+
+## W365 Opportunity
+
+```python
+vwFactOpportunityPipeline()
+| where OpportunityCloseDate >= datetime(2021-07-01) or OpportunityDueDate >= datetime(2021-07-01)
+| where RevSumCategory == "Cloud PC"
+| distinct CRMOpportunityID, TPID, TopParent, MSXStatus, OpportunityDueDate, OpportunityCloseDate, OpportunityOwner
+| join kind=inner vwMAL() on TPID // exclude non-MAL accounts
+| extend OpportunityCloseDate=case(
+    MSXStatus == "Open", datetime(null),
+    OpportunityCloseDate
+)
+| join kind=leftouter (
+    Calendar()
+    | distinct FiscalQuarter, FiscalDate
+) on $left.OpportunityCloseDate == $right.FiscalDate
+| join kind=inner vwOpportunityTeam() on $left.CRMOpportunityID == $right.OpportunityCRMID
+| join kind=inner Person() on $left.OpportunityTeamAlias == $right.Alias
+| join kind=inner (
+    cluster('1es.kusto.windows.net').database('HeadTrax').Person
+    | where CurrentlyEmployed
+    | project Alias=toupper(Alias), DisplayName
+) on Alias
+| project CRMOpportunityID, TPID, TopParent, MSXStatus, OpportunityDueDate, OpportunityCloseDate, ClosedQuarter=FiscalQuarter, ClosedMonth=startofmonth(OpportunityCloseDate),
+    DisplayName, OpportunityTeamAlias, StandardTitle=trim_end("\\d", StandardTitle), Qualifier1, Qualifier2, OpportunityOwner
+| extend
+    QualifiedRole=case(
+        StandardTitle in (
+            "Solution Area Specialists IC",
+            "Specialist",
+            "Cloud Solution Architecture IC",
+            "Cloud Solution Architect",
+            "Cloud Solution Architecture OPEX IC",
+            "Cloud Solution Architect (OPEX)") and Qualifier1 == "N/A" and Qualifier2 == "Azure-Infrastructure", "Yes",
+        StandardTitle in (
+            "Digital Solution Area Specialists IC",
+            "Digital Specialist") and Qualifier1 == "Enterprise" and Qualifier2 == "Azure-Apps&Infra-CustAcq", "Yes",
+        "No"
+    )
+```
+
+
+
+## TP CloudPC Seats FY22
+
+```python
+vwFactOpportunityPipeline()
+| where OpportunityCloseDate >= datetime(2021-07-01) or OpportunityDueDate >= datetime(2021-07-01)
+| where RevSumCategory == "Cloud PC"
+| distinct TPID, TopParent
+| join kind=inner vwBilledRevenue(snapshotIndex=1) on TPID
+| where RevSumCategory == "Cloud PC"
+| where FiscalMonth between (datetime(2021-07-01) .. startofmonth(now()))
+| summarize InitiatedUnits=sum(InitiatedUnits) by TPID, FiscalMonth, TransactionType
+| join kind=inner (
+    Calendar()
+    | distinct FiscalQuarter, FiscalMonth
+) on FiscalMonth
+| join kind=inner vwMAL() on TPID
+| project TPID, TopParent, SummarySegment, FiscalQuarter, FiscalMonth,TransactionType, InitiatedUnits,
+    InitiatedUnitsCap=case(
+        InitiatedUnits < 50, todecimal(0),
+        InitiatedUnits >= 1500, todecimal(1500),
+        InitiatedUnits
+    ),
+    RateCard=22
+| extend
+    ArtificialACRW365=InitiatedUnitsCap * RateCard
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
