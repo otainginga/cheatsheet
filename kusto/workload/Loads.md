@@ -706,6 +706,119 @@ print str = strcat_array(dynamic([1, 2, 3]), "->")
 
 
 
+
+
+# Learning Material
+
+## LM1
+
+**<Azure Defender for IOT - Propensity Score Model Analysis, FY22 Propensity List>**
+
+### data sample 
+
+| ETLDate                         | 8/17/2021                           | 8/17/2021             | 8/17/2021                | 8/17/2021             |
+| ------------------------------- | ----------------------------------- | --------------------- | ------------------------ | --------------------- |
+| TPID                            | 940486                              | 1563603               | 521428                   | 6003430               |
+| TopParent                       | PETROBRAS - PETRÃ“LEO BRASILEIRO SA | VALE SA               | SYDNEY WATER CORPORATION | DOWNER EDI LIMITED    |
+| SummarySegment                  | Enterprise Commercial               | Enterprise Commercial | Enterprise Public Sector | Enterprise Commercial |
+| Segment                         | Strategic Commercial                | Strategic Commercial  | Major Public Sector      | Major Commercial      |
+| TimeZone                        | Americas                            | Americas              | Asia                     | Asia                  |
+| Area                            | Latam                               | Latam                 | Australia                | Australia             |
+| Industry                        | Oil & Gas                           | Mining                | Water & Sewage           | Real Estate           |
+| Score                           | 5                                   | 6                     | 1                        | 6                     |
+| IsTargetIndustry                | 0                                   | 0                     | 0                        | 1                     |
+| HasSentinelACR                  | 0                                   | 1                     | 0                        | 0                     |
+| IsAvgMonthlyAzureSecurityACRL50 | 1                                   | 1                     | 0                        | 1                     |
+| HasOtherIoTACR                  | 1                                   | 1                     | 1                        | 1                     |
+| HasE5BilledRevenue              | 1                                   | 1                     | 0                        | 1                     |
+| HasMDEBilledRevenue             | 1                                   | 1                     | 0                        | 1                     |
+| IsS100Account                   | 0                                   | 0                     | 0                        | 0                     |
+| IsIoTDepthAccount               | 1                                   | 1                     | 0                        | 1                     |
+| AvgSentinelACR                  | 0                                   | 48.64404211           | 0                        | 0                     |
+| AvgAzureSecurityACR             | 107.2078189                         | 113.0411077           | 35.28801864              | 129.6997772           |
+| AvgAzureTotalACR                | 420.8865483                         | 153.9425934           | 38.78522867              | 227.2815423           |
+| AvgOtherIoTACR                  | 46.0071375                          | 16.97965909           | 10.4987                  | 241.6757118           |
+| AvgE5BilledRevenue              | 33288.03298                         | 12293.07105           | 0                        | 426.2162806           |
+| AvgMDEBilledRevenue             | 232169.8504                         | 46796.74073           | 0                        | 13.2126               |
+| AvgMDEtUsageRate                | 137.3815386                         | 1.211798097           | 0                        | 0.724496806           |
+| IsAD4IoTCustomer                | 0                                   | 0                     | 0                        | 0                     |
+
+
+
+This is to share the propensity score analysis and FY22 propensity list for Azure Defender for IOT. In FY21, there are 6,461 Enterprise accounts from AzureDashboard cube that are part  of the 16 FY22 focused industries list: 6,025 major and 436 strategic accounts.  
+
+- 5,470 have at least 1 Extensible Storage Engine (*ESE*) assigned 
+- Regardless of Extensible Storage Engine (*ESE*) assignment 
+  - Score >=4: 1,896 out of 6,461 , or 29.3% 
+  - Score >=5: 820 out of 6,461, or 12.7%
+
+![account_rankings.png](https://github.com/otainginga/Image/blob/main/iot_material/account_rankings.png?raw=true)
+
+We can find detailed data at AD4IOT propensity list(based on FY21 Azure account) (total: 6,461 enterprise accounts filtered by 16 FY22 focused industries) Also sharing the propensity list using FY22 new enterprise segment list AD4IOT Propensity List-based on FY22 Account Segmentation (total: 11,011 enterprise accounts with all  industry)
+
+
+
+### **Azure Defender for IOT - Propensity Score Model Analysis, FY22 Propensity List**
+
+```python
+The Azure Internet of Things (IoT) is a collection of Microsoft-managed cloud services that connect, monitor, and control billions of IoT assets
+
+ACR - Azure Consumed Revenue
+
+MDE - Microsoft Defender for Endpoint
+
+Sential 
+
+Azure Container Registry (ACR) 
+    
+
+```
+
+
+
+- #### Summary 
+
+- #### Current propensity score analysis details 
+
+- #### High correlation from converted AD4IOT customer 
+
+- #### New propensity score model exploration 
+
+- #### New propensity score model proposal
+
+
+
+**< Summary >**The goal is to analyze the Feb 2021 propensity list, conversion rate to identify higher correlation metrics from converted AD4IOT customers, explore the new propensity score model  and preparing a new FY22 propensity list for review. Summary of findings:
+
+
+
+1.  High score shows higher conversion. 3.3% overall CR on Score >=5 in current propensity list. Total 36 accounts converted regardless of score. 
+2.  The converted AD4IOT customers show higher correlation with **Sentinel ACR**, Other I**OT ACR** and **E5 revenue**, and the small attach rate shows big growth opportunity 
+3.  Conversion rate using ACR in propensity score is higher than the current model using pipeline, and no significant difference on other ACR in AD4IOT customers and non-AD4IoT customers but Azure Security ACR.  
+4.  50%+ accounts has less than $50 monthly Azure Security ACR, it’s the long tail distribution, and applying Azure Security ACR threshold (monthly >=$50) performs best 
+5.  No significant conversion difference for different level MDE usage 
+6. New Propensity score model 
+   1. Remove D4IoT, E5, Azure Security Pipeline – use MDE billed Revenue, E5 Revenue, and Azure Security ACR flag instead 
+   2.  Consider the 3 month avg Azure Security ACR threshold (>= $50)              Target Industry covered 68% of TPIDs (exc. N/A), suggest to add “Health Provider”, “Health Payor”, “Other government” 
+   3. Propose the new score formula – sum from 0 to 8  
+      -  Has Sentinel ACR  
+      - Has Other IOT ACR 
+      -  3 month avg Azure Security ACR >50  
+      -  Has MDE Billed Revenue 
+      - Has E5 Revenue  
+      -  Is S100 Account 
+      - Is IOT Depth Account 
+      -  Is Target Focused Industry based on final list from Scott Lerch and CyberX team 
+        - Automotive/ Health Provider /Consumer Goods/ Intelligence /Critical Infrastructure /Other Government/ Defense Pharma & Life Sciences /Defense Systems Integrators /Process Manufacturing & Agriculture /Discrete Manufacturing /Real Estat /Energy /Retailers /Health Payor /Travel, Tpt, Lgstcs & Hosp
+
+
+
+**< Feb 2021 Propensity Score Analysis Details >**
+
+
+
+The current propensity score is in range of 0 to 8, which involves the YTD ACR Flag,  Pipelines, Target Industry flag, Is S100 and Is IOT Depth account flags. Here are some  observation from the existing list. 1. There are 334(or 4.1%) from current 8.2K account list with propensity score  >=5. Total 11 accounts converted to AD4IOT customer, 3.3% overall CR.  ¡ 315 commercial customers and 11(or 3.5%) converted,  ¡ The other 19 public sector customers has 0 conversion. 2. 36 accounts converted from entire list regardless of score.  l 32 commercial, 21/32 (65%) are below score 5. All of them have Azure  Security and Azure ACR, 87.5% have sentinel ACR. 
+
 # Assignment 1
 
 ## Issue 1
