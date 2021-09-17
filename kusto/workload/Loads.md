@@ -1279,6 +1279,22 @@ vwEngagementMilestone(azureSecOnly=false)
     )
 ```
 
+
+
+notes:
+
+```R
+# for different ID with mulitiple EngagementMilestoneWorkload
+| summarize EngagementWorkload=strcat_array(make_list(EngagementMilestoneWorkload), ", ") by CRMEngagementID, TPID, TopParent, EngagementStatus, EngagementEstimatedCompletionDate, EngagementOwner
+
+# exclude non-MAL accounts
+| join kind=inner vwMAL() on TPID 
+
+
+```
+
+
+
 ## TP ACR FY21Q4
 
 ```python

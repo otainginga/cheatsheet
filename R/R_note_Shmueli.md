@@ -1,4 +1,12 @@
-# read data
+# Summary
+
+![datamining progress in R .png](https://github.com/otainginga/Image/blob/main/datamining%20progress%20in%20R%20.png?raw=true)
+
+
+
+# 00. basic Idea for dealing with data
+
+## 00.01 read data
 
 
 
@@ -18,7 +26,7 @@ class(housing.df[, 1]) # the class of 1st column is ?
 
 
 
-## Data type
+### Data type
 
 ```R
 
@@ -32,7 +40,7 @@ data3 <- as.data.frame(unclass(data3),                     # Convert all columns
 
 
 
-# Data Preparation
+## 00.02 Data Preparation
 
 ```R
 # use set.seed() to get the same partitions when re-running the R code.
@@ -41,9 +49,9 @@ set.seed(1)
 
 
 
-## Subset Selection
+### Subset Selection
 
-### loc method
+#### loc method
 
 ```R
 # Practice showing different subsets of the data
@@ -57,17 +65,27 @@ housing.df$TOTAL.VALUE[1:10]  # show the first 10 rows of the first column
 length(housing.df$TOTAL.VALUE)  # find the length of the first column
 mean(housing.df$TOTAL.VALUE)  # find the mean of the first column
 summary(housing.df)  # find summary statistics for each column
-```
 
-## New dataframe
 
-```
 
 ```
 
+#### New dataframe &delete
+
+```R
+tr.res <- data.frame(train.data$TOTAL_VALUE, reg$fitted.values, reg$residuals)
+head(tr.res)
+
+A <- data.frame('name' = c("AA", "BB", "CC"), 'weight' = c(50, 70, 80), 'seesight' = c(5.0, 4.8, 1.2))
+# delete the first row
+A <- A[-1,]
+# delete the second column
+A <- A[,-2]
+```
 
 
-### random sample in %
+
+#### random sample in %
 
 including training set and validation set 
 
@@ -114,7 +132,7 @@ test.data <- housing.df[test.rows, ]
 
 
 
-## Dummy
+### Dummy
 
 change all factor levels to extra columns
 
@@ -127,7 +145,7 @@ names(housing.df)
 
 
 
-## NaNs
+### NaNs
 
 ```R
 # create NaNs
@@ -147,7 +165,7 @@ housing.df[rows.to.missing,]$BEDROOMS <- median(housing.df$BEDROOMS, na.rm = TRU
 
 
 
-# Fitting
+## 00.03 Fitting
 
 ```R
 # fitting peogress, 
@@ -169,7 +187,7 @@ head(vl.res)
 
 
 
-# Evaluating
+## 00.04 Evaluating
 
 ```R
 library(forecast)
@@ -180,4 +198,8 @@ accuracy(reg$fitted.values, train.data$TOTAL_VALUE)
 pred <- predict(reg, newdata = valid.data)
 accuracy(pred, valid.data$TOTAL_VALUE)
 ```
+
+
+
+
 
