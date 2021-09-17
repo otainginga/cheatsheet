@@ -49,7 +49,7 @@ set.seed(1)
 
 
 
-### Subset Selection
+### |Variable Selection
 
 #### loc method
 
@@ -132,7 +132,7 @@ test.data <- housing.df[test.rows, ]
 
 
 
-### Dummy
+### |Dummy
 
 change all factor levels to extra columns
 
@@ -145,7 +145,7 @@ names(housing.df)
 
 
 
-### NaNs
+### |NaNs
 
 ```R
 # create NaNs
@@ -155,17 +155,63 @@ summary(housing.df$BEDROOMS)  # Now we have 10 NA's and the median of the
 # remaining values is 3.
 
 
-# Fill NaNs
+# Fill NaNs with median
 housing.df[rows.to.missing,]$BEDROOMS <- median(housing.df$BEDROOMS, na.rm = TRUE)
+```
+
+
+
+### |Normalizing and Rescaling 
+
+
+
+
+
+## 00.03 EDA
+
+stats
+
+```R
+#### Table 4.3
+
+boston.housing.df <- read.csv("./R_data/BostonHousing.csv", header = TRUE) 
+head(boston.housing.df, 9)
+summary(boston.housing.df) 
+
+# compute mean, standard dev., min, max, median, length, and missing values of CRIM
+mean(boston.housing.df$CRIM) 
+sd(boston.housing.df$CRIM)
+min(boston.housing.df$CRIM)
+max(boston.housing.df$CRIM)
+median(boston.housing.df$CRIM) 
+length(boston.housing.df$CRIM) 
+
+# find the number of missing values of variable CRIM
+sum(is.na(boston.housing.df$CRIM)) 
+
+# compute mean, standard dev., min, max, median, length, and missing values for all
+# variables
+data.frame(mean=sapply(boston.housing.df, mean), 
+                         sd=sapply(boston.housing.df, sd), 
+                         min=sapply(boston.housing.df, min), 
+                         max=sapply(boston.housing.df, max), 
+                         median=sapply(boston.housing.df, median), 
+                         length=sapply(boston.housing.df, length),
+                         miss.val=sapply(boston.housing.df, function(x) 
+                         sum(length(which(is.na(x))))))
+
+                                         
+# corrlation map
+round(cor(boston.housing.df),2)
+# table for categorys 
+table(boston.housing.df$CHAS)
 ```
 
 
 
 
 
-
-
-## 00.03 Fitting
+## 00.04 Fitting
 
 ```R
 # fitting peogress, 
@@ -187,7 +233,7 @@ head(vl.res)
 
 
 
-## 00.04 Evaluating
+## 00.05 Evaluating
 
 ```R
 library(forecast)
@@ -200,6 +246,24 @@ accuracy(pred, valid.data$TOTAL_VALUE)
 ```
 
 
+
+
+
+## 00.06 Visualization
+
+### |Basic visualizations
+
+<span style="background-color: yellow;">with ggplot</span>
+
+```R
+install.packages(c("tidyverse", "colorspace", "corrr",  "cowplot",
+                   "ggdark", "ggforce", "ggrepel", "ggridges", "ggsci",
+                   "ggtext", "ggthemes", "grid", "gridExtra", "patchwork",
+                   "rcartocolor", "scico", "showtext", "shiny",
+                   "plotly", "highcharter", "echarts4r"))
+```
+
+https://zhuanlan.zhihu.com/p/370223674
 
 
 
