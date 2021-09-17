@@ -62,6 +62,24 @@ ACR: *Azure* Committed Revenue
 
 Windows 365[Cloud PC]
 
+### Azure Sentinel
+
+Microsoft Azure Sentinel is a scalable, cloud-native, **security information event management (SIEM)** and **security orchestration automated response (SOAR)** solution.
+
+**XDR**(extended detection and response) collects and automatically correlates data across multiple security layers – email, endpoint, server, cloud workload, and network. This allows for faster detection of threats and improved investigation and response times through security analysis,**Microsoft Defender contains [M365 Defender and Azure Defender]**
+
+### OT/IT
+
+IT: information technology cyber security
+
+IT security: confidentiality-integrity-availability
+
+OT: operational technology the hardware and software dedicated to detecting or causing changes in physical processes through direct monitoring and /or control of physical devices such as valves, pumps, etc.
+
+OT Security: Safty-Availability-Integrity
+
+
+
 ## 00.03 Fiscal Year
 
 A New Fiscal Year starts from July, Fiscal year 2021starts from July 1st, 2021.
@@ -764,13 +782,16 @@ We can find detailed data at AD4IOT propensity list(based on FY21 Azure account)
 The Azure Internet of Things (IoT) is a collection of Microsoft-managed cloud services that connect, monitor, and control billions of IoT assets
 
 ACR - Azure Consumed Revenue
+Sentinel ACR - 
 
 MDE - Microsoft Defender for Endpoint
 
-Sential 
-
 Azure Container Registry (ACR) 
-    
+
+YTD ACR flag
+
+AD4IOT
+
 
 ```
 
