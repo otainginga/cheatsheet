@@ -61,7 +61,9 @@ summary(housing.df)  # find summary statistics for each column
 
 
 
-### random sample method
+### random sample in %
+
+including training set and validation set 
 
 ```R
 # random sample of 5 observations
@@ -71,6 +73,36 @@ housing.df[s,]
 # oversample houses with over 10 rooms
 s <- sample(row.names(housing.df), 5, prob = ifelse(housing.df$ROOMS>10, 0.9, 0.01))
 housing.df[s,]
+
+
+
+# use set.seed() to get the same partitions when re-running the R code.
+set.seed(1)
+
+## partitioning into training (60%) and validation (40%)
+train.rows <- sample(rownames(housing.df), dim(housing.df)[1]*0.6)
+train.data <- housing.df[train.rows, ]
+# assign row IDs that are not already in the training set, into validation 
+valid.rows <- setdiff(rownames(housing.df), train.rows) 
+valid.data <- housing.df[valid.rows, ]
+
+## partitioning into training (50%), validation (30%), test (20%)
+# randomly sample 50% of the row IDs for training
+train.rows <- sample(rownames(housing.df), dim(housing.df)[1]*0.5)
+
+# sample 30% of the row IDs into the validation set, drawing only from records
+# not already in the training set
+# use setdiff() to find records not already in the training set
+valid.rows <- sample(setdiff(rownames(housing.df), train.rows), 
+                     dim(housing.df)[1]*0.3)
+
+# assign the remaining 20% row IDs serve as test
+test.rows <- setdiff(rownames(housing.df), union(train.rows, valid.rows))
+
+# create the 3 data frames by collecting all columns from the appropriate rows 
+train.data <- housing.df[train.rows, ]
+valid.data <- housing.df[valid.rows, ]
+test.data <- housing.df[test.rows, ]
 
 ```
 
