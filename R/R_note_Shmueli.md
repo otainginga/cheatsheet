@@ -59,6 +59,12 @@ mean(housing.df$TOTAL.VALUE)  # find the mean of the first column
 summary(housing.df)  # find summary statistics for each column
 ```
 
+## New dataframe
+
+```
+
+```
+
 
 
 ### random sample in %
@@ -133,5 +139,45 @@ summary(housing.df$BEDROOMS)  # Now we have 10 NA's and the median of the
 
 # Fill NaNs
 housing.df[rows.to.missing,]$BEDROOMS <- median(housing.df$BEDROOMS, na.rm = TRUE)
+```
+
+
+
+
+
+
+
+# Fitting
+
+```R
+# fitting peogress, 
+# remove variable "TAX"
+reg <- lm(TOTAL_VALUE ~ .-TAX, data = housing.df, subset = train.rows) 
+
+tr.res <- data.frame(train.data$TOTAL_VALUE, reg$fitted.values, reg$residuals)
+head(tr.res)
+
+
+pred <- predict(reg, newdata = valid.data)
+vl.res <- data.frame(valid.data$TOTAL_VALUE, pred, residuals = 
+                       valid.data$TOTAL_VALUE - pred)
+head(vl.res)
+
+```
+
+
+
+
+
+# Evaluating
+
+```R
+library(forecast)
+# compute accuracy on training set
+accuracy(reg$fitted.values, train.data$TOTAL_VALUE)
+
+# compute accuracy on prediction set
+pred <- predict(reg, newdata = valid.data)
+accuracy(pred, valid.data$TOTAL_VALUE)
 ```
 
