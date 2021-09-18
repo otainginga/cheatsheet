@@ -143,6 +143,12 @@ housing.df <- dummy.data.frame(housing.df, sep = ".")
 names(housing.df)
 ```
 
+### | Bins
+
+```R
+boston.housing.df$RM.bin <- .bincode(boston.housing.df$RM, c(1:9))
+```
+
 
 
 ### |NaNs
@@ -157,6 +163,9 @@ summary(housing.df$BEDROOMS)  # Now we have 10 NA's and the median of the
 
 # Fill NaNs with median
 housing.df[rows.to.missing,]$BEDROOMS <- median(housing.df$BEDROOMS, na.rm = TRUE)
+
+# find the number of missing values of variable CRIM
+sum(is.na(boston.housing.df$CRIM)) 
 ```
 
 
@@ -169,7 +178,7 @@ housing.df[rows.to.missing,]$BEDROOMS <- median(housing.df$BEDROOMS, na.rm = TRU
 
 ## 00.03 EDA
 
-stats
+### |stats
 
 ```R
 #### Table 4.3
@@ -178,7 +187,7 @@ boston.housing.df <- read.csv("./R_data/BostonHousing.csv", header = TRUE)
 head(boston.housing.df, 9)
 summary(boston.housing.df) 
 
-# compute mean, standard dev., min, max, median, length, and missing values of CRIM
+# compute mean, standard dev., min, max, median, length, and missing values of CRIM #######################
 mean(boston.housing.df$CRIM) 
 sd(boston.housing.df$CRIM)
 min(boston.housing.df$CRIM)
@@ -189,7 +198,7 @@ length(boston.housing.df$CRIM)
 # find the number of missing values of variable CRIM
 sum(is.na(boston.housing.df$CRIM)) 
 
-# compute mean, standard dev., min, max, median, length, and missing values for all
+# compute mean, standard dev., min, max, median, length, and missing values for all #########################
 # variables
 data.frame(mean=sapply(boston.housing.df, mean), 
                          sd=sapply(boston.housing.df, sd), 
@@ -201,15 +210,149 @@ data.frame(mean=sapply(boston.housing.df, mean),
                          sum(length(which(is.na(x))))))
 
                                          
-# corrlation map
+# corrlation map ####################################################################################
 round(cor(boston.housing.df),2)
 # table for categorys 
 table(boston.housing.df$CHAS)
+                                         
+# in the shape of a table #########################################################################
+# compute the average of MEDV by (binned) RM and CHAS
+# in aggregate() use the argument by= to define the list of aggregating variables, 
+# and FUN= as an aggregating function.
+aggregate(boston.housing.df$MEDV, by=list(RM=boston.housing.df$RM.bin, 
+                                          CHAS=boston.housing.df$CHAS), FUN=mean) 
+   RM CHAS        x
+1   3    0 25.30000
+2   4    0 15.40714
+3   5    0 17.20000
+4   6    0 21.76917
+5   7    0 35.96444
+6   8    0 45.70000
+7   5    1 22.21818
+8   6    1 25.91875
+9   7    1 44.06667
+10  8    1 35.95000
+                                         
+                                         
+                                         
+```
+
+
+
+### |library(reshape?2?)
+
+
+
+**data sample(original)**: 宽型数据格式，经过melt 的重构将成为长格式<span style="background-color: yellow;">[对于每个ID1 和ID2的组合行，若original data有n measurements, 则 长格式的数据有 4*n rows]</span>
+
+
+
+| ID1(ID  or bin_value) | ID2  | MeasurementA (value) | MeasurementB (value) | MeasurementC (value) |
+| --------------------- | ---- | -------------------- | -------------------- | -------------------- |
+| 1                     | A    | 0.951371             | 0.995423             | 0.832185             |
+| 2                     | B    | 0.87416              | 0.530091             | 0.823064             |
+| 3                     | A    | 0.632189             | 0.436937             | 0.970236             |
+| 4                     | B    | 0.113804             | 0.504563             | 0.248914             |
+
+**长格式数据**
+
+| ID1(ID or  bin_value) | ID2  | variable(default) | value(default) |
+| --------------------- | ---- | ----------------- | -------------- |
+| 1                     | A    | MeasurementA      |                |
+| 2                     | B    | MeasurementA      |                |
+| 3                     | A    | MeasurementA      |                |
+| 4                     | B    | MeasurementA      |                |
+| 1                     | A    | MeasurementB      |                |
+| 2                     | B    | MeasurementB      |                |
+| 3                     | A    | MeasurementB      |                |
+| 4                     | B    | MeasurementB      |                |
+|                       |      | ...               |                |
+
+
+
+
+
+```R
+#######################
+
+# use install.packages("reshape") the first time the package is used
+library(reshape) 
+boston.housing.df <- read.csv("./R_data/BostonHousing.csv")
+
+# create bins of size 1
+boston.housing.df$RM.bin <- .bincode(boston.housing.df$RM, c(1:9)) 
+
+
+# use melt() to stack a set of columns into a single column of data.
+# stack MEDV values for each combination of (binned) RM and CHAS
+mlt <- melt(boston.housing.df, id=c("RM.bin", "CHAS"), measure=c("MEDV"))
+
+> head(mlt, 5)
+    RM.bin CHAS variable value
+1        6    0     MEDV  24.0
+2        6    0     MEDV  21.6
+3        7    0     MEDV  34.7
+4        6    0     MEDV  33.4
+5        7    0     MEDV  36.2
+
+# use cast() to reshape data and generate pivot table
+cast(mlt, RM.bin ~ CHAS, subset=variable=="MEDV", 
+     margins=c("grand_row", "grand_col"), mean)
+
+  RM.bin        0        1    (all)
+1      3 25.30000      NaN 25.30000
+2      4 15.40714      NaN 15.40714
+3      5 17.20000 22.21818 17.55159
+4      6 21.76917 25.91875 22.01599
+5      7 35.96444 44.06667 36.91765
+6      8 45.70000 35.95000 44.20000
+7  (all) 22.09384 28.44000 22.53281
+  
 ```
 
 
 
 
+
+cast(data, **formula = ... ~ variable**, fun.aggregate=NULL, ...,
+  margins=FALSE, subset=TRUE, df=FALSE, fill=NULL, add.missing=FALSE,
+  value = guess_value(data))
+Arguments
+
+- data	:molten data frame, see melt
+- formula	:casting formula, see details for specifics
+- fun.aggregate	:aggregation function
+- add.missing	:fill in missing combinations?
+- value	:name of value column
+- ...	:further arguments are passed to aggregating function
+- margins	:vector of variable names **(can include "grand\_col" and "grand\_row")** to compute margins for, or TRUE computer all margins
+- subset	:logical vector to subset data set with before reshaping
+- df	:argument used internally
+- fill	:value with which to fill in structural missings, defaults to value from applying fun.aggregate to 0 length vector
+
+#### in reshape2
+
+[R语言学习 第十三篇：利用reshape2包重塑数据 - 爱码网 (likecs.com)](https://www.likecs.com/show-25712.html)
+
+melt(data,id.vars,measure.vars,variable.name='variable',...,na.rm=FALSE,value.name='value',factorAsStrings=TRUE)
+参数注释：
+
+data：融合的数据框
+id.vars：由标识变量构成的向量，用于标识观测的变量
+measure.vars ：由观测变量构成的向量
+variable.name：用于保存原始变量名的变量的名称
+value.name：用于保存原始值的名称
+
+dcast(data, formula, fun.aggregate = NULL, ..., margins = NULL,  subset = NULL, fill = NULL, drop = TRUE,
+  value.var = guess_value(data))
+
+参数注释：
+
+data：已融合的数据框
+formula：用于指定输出的结果集格式
+fun.aggregate：用于指定聚合函数，对已聚合的数据执行聚合运算
+margins：相当于透视表中的行总计和列总计
+subset：选取满足一些特定值的数据，相当于Excel透视表的筛选。例如， subset =.（variable ==“length”)
 
 ## 00.04 Fitting
 
@@ -305,3 +448,12 @@ codes( link with "+")
 |                                                   |              |              |           |                        |          | legend.position = "none"/top/                                |                          |
 |                                                   |              |              |           |                        |          | panel.grid.major.x = element_line(color = "red1")            |                          |
 |                                                   |              |              |           |                        |          |                                                              |                          |
+
+
+
+
+
+
+
+PCA
+
