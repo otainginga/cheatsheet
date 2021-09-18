@@ -251,7 +251,7 @@ accuracy(pred, valid.data$TOTAL_VALUE)
 
 ## 00.06 Visualization
 
-### |Basic visualizations
+### |ggplot2
 
 <span style="background-color: yellow;">with ggplot</span>
 
@@ -261,9 +261,45 @@ install.packages(c("tidyverse", "colorspace", "corrr",  "cowplot",
                    "ggtext", "ggthemes", "grid", "gridExtra", "patchwork",
                    "rcartocolor", "scico", "showtext", "shiny",
                    "plotly", "highcharter", "echarts4r"))
+# install from GitHub since not on CRAN
+install.packages('devtools')
+devtools::install_github("JohnCoene/charter")
+library(ggplot2)
+library(tidyverse)
+
 ```
 
 https://zhuanlan.zhihu.com/p/370223674
 
+https://zhuanlan.zhihu.com/p/391832351
 
 
+
+| Issue        | Code      | Note                                                         |
+| ------------ | --------- | ------------------------------------------------------------ |
+| **数据**     |           | **作图用的原始数据**                                         |
+| **几何图形** | **geom_** | **表示数据的几何形状**                                       |
+| **美学**     | **aes()** | **几何或者统计对象的美学，比如位置，颜色，大小，形状等**     |
+| 刻度         | scale_()  | 数据与美学维度之间的映射，比如图形宽度的数据范围，           |
+| 统计转换     | stat_     | 数据的统计，比如百分位，拟合曲线或者和                       |
+| 坐标系统     | coord_    | 数据的转换                                                   |
+| 面           | facet_    | 数据图表的排列                                               |
+| 主题         | theme()   | 图形的整体视觉默认值，如背景、网格、轴、默认字体、大小和颜色 |
+
+
+
+
+
+codes( link with "+")
+
+| ggplot(chic,  )                                   | geom_point() | geom_line()  | them_bw() | labs()                 | ylim()   | theme()                                                      | expand_limits()          |
+| ------------------------------------------------- | ------------ | ------------ | --------- | ---------------------- | -------- | ------------------------------------------------------------ | ------------------------ |
+| chic,                                             | color="",    | color= "",   |           | x="",                  | c(0, 50) | axis.title.x=element_text(vjust=0,size=15),                  | x=0,<br /> y=0           |
+| aes(x=d,<br />y=t,<br />color = c<br />shape = e) | shape="",    | linetype="", |           | y="(°F)"               |          | axis.title.x=element_text(margin=margin(t=10),size=15),      | **使图表从坐标原点开始** |
+|                                                   | size=2,      | size=.3      |           | title=""               |          | margin()对象中的标签t和r分别指代top和right。<br />你还可以将这四个边距指定为margin(t,  r, b, l)。 |                          |
+|                                                   | aplha = 0.5, |              |           | labs(x = NULL, y = "") |          | axis.title = element_text(size = 15, color = "",  face = "bold.italic") |                          |
+|                                                   |              |              |           |                        |          | italic , bold                                                |                          |
+|                                                   |              |              |           |                        |          | axis.text = element_text(color = "dodgerblue", size = 12),   |                          |
+|                                                   |              |              |           |                        |          | legend.position = "none"/top/                                |                          |
+|                                                   |              |              |           |                        |          | panel.grid.major.x = element_line(color = "red1")            |                          |
+|                                                   |              |              |           |                        |          |                                                              |                          |
